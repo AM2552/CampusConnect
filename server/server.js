@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./models');
 
+app.use(express.json());
+
 //goes over every table in models folder, checks if they
 //exist in the database and if not, create it
 db.sequelize.sync().then(() => {
@@ -15,8 +17,3 @@ db.sequelize.sync().then(() => {
 const getRouter = require('./routes/threads');
 
 app.use("/", getRouter);
-
-//app.get('/about',(req,res) => {
-    //res.send("This is a forum app created by four disciplined students of FH Campus Wien!")
-//})
-

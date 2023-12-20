@@ -18,3 +18,8 @@ Further server setup:
 For sequelize:
 - don't touch the index.js file, this just identifies the files in ./models as different table#
 - to connect database with mysql workbench go to config.json, change the properties to the ones you set on mysql
+
+For database:
+- download mysql server, workbench and shell on your pc 
+    guide here -> https://www.youtube.com/watch?v=k5tICunelSU&t=303s&ab_channel=AmitThinks
+- sequelize will connect everything to the workbench 
