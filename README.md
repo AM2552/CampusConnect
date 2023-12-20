@@ -1,13 +1,12 @@
 # CampusConnect
 
 Setup for client application:
-
 - cd ./client
 - npm install react
 - npm start
+- npm install axios, allows you to make api requests, similar to fetch api from js
 
 Setup for backend application:
-
 - cd ./server
 - npm install --save-dev nodemon -> if "npm run dev" doesn't work
 
