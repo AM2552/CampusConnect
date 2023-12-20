@@ -16,7 +16,7 @@ Further server setup:
 - Then important, npx sequelize init and delete folders seeders and migrations
 
 For sequelize:
-- don't touch the index.js file, this just identifies the files in ./models as different table#
+- don't touch the index.js file, this just identifies the files in ./models as different tables
 - to connect database with mysql workbench go to config.json, change the properties to the ones you set on mysql
 
 For database:

@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { Threads } = require('../models');
 
-router.get('/', (req,res) => {
-    res.json("Welcome to CampusConnect")
+router.get('/', async (req,res) => {
+    //sequelize function which goes through all tables and stores it in variable
+    const listOfThreads = await Threads.findAll();
+    res.json(listOfThreads);
 });
 
 router.post('/', async (req,res) => {
