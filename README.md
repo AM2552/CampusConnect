@@ -7,5 +7,6 @@ Setup for client application:
 - npm start
 
 Setup for backend application:
+
 - cd ./server
 - npm install --save-dev nodemon -> if "npm run dev" doesn't work
