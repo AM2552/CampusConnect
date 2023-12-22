@@ -1,28 +1,20 @@
-import './App.css';
-import axios from "axios";
-import { useEffect, useState } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import createThread from "./pages/createThread";
 
 function App() {
-
-  const [listOfThreads, setListOfThreads] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:5001/").then((response) => {
-      setListOfThreads(response.data);
-    });
-  }, []);
-  return ( 
+  return (
     <div className="App">
-      {listOfThreads.map((value, key) => { 
-      return (
-      <div className="thread">
-        <div className="title">{value.title} </div>
-        <div className="body">{value.threadText} </div>
-        <div className="footer">{value.username} </div>
-      </div> 
-      );
-    })}
-  </div>
+      <Router>
+        <Link to="/createthread"> Create a Thread</Link>
+        <Link to="/"> Home Page</Link>
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/createthread" exact Component={createThread} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
