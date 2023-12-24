@@ -22,3 +22,7 @@ For database:
 - download mysql server, workbench and shell on your pc 
     guide here -> https://www.youtube.com/watch?v=k5tICunelSU&t=303s&ab_channel=AmitThinks
 - sequelize will connect everything to the workbench 
+
+Libraries:
+- Formik: Provides easier creation of a input form
+- Yup: Provides text validation for the input of the form, for example max length of username or type of characters
