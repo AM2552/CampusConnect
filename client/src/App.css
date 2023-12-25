@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
+  height: 100vh; /* Set the height of .App to 100% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -14,14 +20,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0350e9;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(245, 0, 0);
 }
 
 .App-link {
