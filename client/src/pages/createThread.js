@@ -2,8 +2,10 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function createThread() {
+function CreateThread() {
+  let navigate = useNavigate();
   const initialValue = {
     title: "",
     threadText: "",
@@ -18,7 +20,7 @@ function createThread() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:5001/", data).then((response) => {
-      console.log("It worked!");
+      navigate("/");
     });
   };
 
@@ -47,4 +49,4 @@ function createThread() {
   );
 }
 
-export default createThread;
+export default CreateThread;

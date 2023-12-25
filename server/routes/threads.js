@@ -8,6 +8,12 @@ router.get("/", async (req, res) => {
   res.json(listOfThreads);
 });
 
+router.get("/byId/:id", async (req, res) => {
+  const id = req.params.id;
+  const thread = await Threads.findByPk(id);
+  res.json(thread);
+});
+
 router.post("/", async (req, res) => {
   //important that we receive data from an input or form as json (object)
   const thread = req.body;

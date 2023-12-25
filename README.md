@@ -26,3 +26,6 @@ For database:
 Libraries:
 - Formik: Provides easier creation of a input form
 - Yup: Provides text validation for the input of the form, for example max length of username or type of characters
+
+Extension:
+- ES7 + React
