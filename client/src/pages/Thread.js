@@ -10,7 +10,7 @@ function Thread() {
     axios.get(`http://localhost:5001/byId/${id}`).then((response) => {
       setThreadObject(response.data);
     });
-  });
+  }, [id]);
   return (
     <div className="threadPage">
       <div classname="threadObject">

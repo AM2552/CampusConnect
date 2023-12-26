@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   //creates table in database called Threads
-  const threads = sequelize.define("Threads", {
+  const Threads = sequelize.define("Threads", {
     //creates title, threadText and username columns in table
     title: {
       type: DataTypes.STRING,
@@ -16,5 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  return threads;
+  Threads.associate = (models) => {
+    Threads.hasMany(models.Posts, {
+      onDelete: "cascade",
+    });
+  };
+
+  return Threads;
 };
