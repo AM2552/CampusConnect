@@ -18,6 +18,7 @@ function Home() {
       {listOfThreads.map((value, key) => {
         return (
           <div
+            key={key}
             className="thread"
             onClick={() => {
               navigate(`/thread/${value.id}`);
