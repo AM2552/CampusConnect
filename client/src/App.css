@@ -5,6 +5,13 @@
   align-items: center;
   padding-top: 40px;
   flex-direction: column;
+  text-align: center;
+  background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
+  height: 100vh; /* Set the height of .App to 100% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
@@ -38,6 +45,23 @@ body {
   color: white;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #0350e9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(245, 0, 0);
 }
 
 .thread .body {
