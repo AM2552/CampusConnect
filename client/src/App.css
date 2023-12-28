@@ -1,4 +1,10 @@
 .App {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  flex-direction: column;
   text-align: center;
   background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
   height: 100vh; /* Set the height of .App to 100% of the viewport height */
@@ -8,9 +14,37 @@
   justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.thread {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  border: 1px solid lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.thread:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+.thread .title {
+  flex: 20%;
+  border-bottom: 1px solid lightgray;
+  background-color: rgb(30, 56, 255);
+  display: grid;
+  place-content: center;
+  color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -30,15 +64,24 @@
   color: rgb(245, 0, 0);
 }
 
-.App-link {
-  color: #61dafb;
+.thread .body {
+  flex: 60%;
+  display: grid;
+  place-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.thread .footer {
+  flex: 20%;
+  border-top: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background-color: rgb(30, 56, 255);
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+span {
+  color: red;
 }

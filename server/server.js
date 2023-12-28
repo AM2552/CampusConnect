@@ -1,17 +1,20 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const db = require("./models");
+const cors = require("cors");
+const getRouter = require("./routes/threads");
+const postsRouter = require("./routes/posts");
 
-//route for /
-app.get('/',(req,res) =>  {
-    res.send("Welcome to CampusConnect");
-});
+app.use(express.json());
+app.use(cors());
+app.use("/", getRouter);
+app.use("/posts", postsRouter);
 
-//route for /about
-app.get('/about',(req,res) => {
-    res.send("This is a forum app created by four disciplined students of FH Campus Wien!")
-})
-
-//creates a server
-app.listen(5000, ()=> {
-    console.log("listening on port 5000");
+//goes over every table in models folder, checks if they
+//exist in the database and if not, create it
+db.sequelize.sync().then(() => {
+  //creates a server
+  app.listen(5001, () => {
+    console.log("listening on port 5001");
+  });
 });
