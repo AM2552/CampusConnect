@@ -1,22 +1,27 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import createThread from "./pages/createThread";
+import CreateThread from "./pages/createThread";
 import Thread from "./pages/Thread";
 
 function App() {
   return (
-    <div className="App">
+    
       <Router>
-        <Link to="/createthread"> Create a Thread</Link>
-        <Link to="/"> Home Page</Link>
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/createthread" exact Component={createThread} />
-          <Route path="/thread/:id" exact element={<Thread />} />
-        </Routes>
+          <aside className="aside1"></aside>
+          <header className="header">
+            <Link to="/"> Home Page</Link>
+          </header>
+          <main className="main">
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/thread/:id" exact element={<Thread />} />
+              <Route path="/createthread" exact element={<CreateThread/>} />
+            </Routes>
+          </main>
+          <aside className="aside2"> <Link id="createButton" to="/createthread">Create a Thread</Link></aside>
+          <footer className="footer"></footer>
       </Router>
-    </div>
   );
 }
 
