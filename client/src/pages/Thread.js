@@ -29,15 +29,16 @@ function Thread() {
   };
 
   return (
-    <div className="threadPage">
-      <div className="left">
+    <div className="threadPageBody">
+      <div className="threadPageLeft">
         <div classname="threadObject">
+          <div className="threadObjectUsername">{threadObject.username}</div>
           <div className="threadObjectTitle">{threadObject.title}</div>
           <div className="threadObjectText">{threadObject.threadText}</div>
-          <div className="threadObjectUsername">{threadObject.username}</div>
+          
         </div>
       </div>
-      <div className="right">
+      <div className="threadPageRight">
         <div className="addPostField">
           <input
             type="text"
@@ -46,8 +47,9 @@ function Thread() {
             onChange={(event) => {
               setNewPost(event.target.value);
             }}
+            className="commentInput"
           />
-          <button onClick={addPost}>Add Post</button>
+          <button onClick={addPost} className="addPostButton">Add Post</button>
         </div>
         <div className="listOfPosts"></div>
         {postObjects.map((post, key) => {

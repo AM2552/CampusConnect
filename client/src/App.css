@@ -5,7 +5,7 @@ body, html {
 body {
   margin: 0;
   display: grid;
-  grid-template-columns: 25% auto 25%;
+  grid-template-columns: 15% auto 15%;
   grid-template-rows: 15% auto 10%;
   grid-template-areas:
     "header header header"
@@ -52,7 +52,7 @@ footer {
   text-decoration: none;
   color: aliceblue;
   font-weight: bold;
-  font-family: Helvetica  ;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   
 }
 
@@ -71,7 +71,7 @@ footer {
   border-radius: 15px;
   flex-direction: column;
   margin-top: 35px;
-  font-family: Helvetica;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   
 }
@@ -95,6 +95,7 @@ footer {
   flex: 60%;
   display: grid;
   place-content: center;
+  padding-left: 20px;
 }
 
 .thread .footer {
@@ -124,4 +125,115 @@ footer {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+/*thread-Site by ID*/
+.threadObjectTitle {
+  font-size: 50px;
+}
+
+.left {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 350px;
+  border-radius: 15px;
+  flex-direction: column;
+  margin-top: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+}
+
+.threadPageLeft .threadObjectTitle {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: grid;
+  place-content: center;
+  color: #83cdf2;
+  padding-top: 15px;
+  
+}
+.threadPageLeft .threadObjectText {
+  color: white;
+  display: grid;
+  place-content: center;
+  padding-left: 10px;
+  padding-top: 30px;
+}
+
+.threadPageLeft .threadObjectUsername {
+  color: aliceblue;
+  padding-left: 4px;
+  padding-top: 4px;
+}
+
+.threadPageBody {
+  display: grid;
+  grid-template-columns: 50% ;
+  grid-template-rows: 100vh;
+  grid-template-areas:
+    "left right";
+}
+
+.threadPageLeft {
+  border-right: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.threadPageRight {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.commentInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none; 
+  border-bottom: 1px solid #ccc; 
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: transparent;
+  color: white
+}
+
+.commentInput::placeholder {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.commentInput:focus {
+  outline: none;
+  border-bottom: 2px solid #0366d6;
+}
+
+.addPostButton {
+  background-color: #2f81ab;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.addPostButton:hover {
+  background-color: rgb(184, 112, 112);
+}
+
+.listOfPosts {
+  padding-top: 18px;
+}
+
+.post {
+  color: rgb(255, 255, 255);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 5px;
+  border-top: 1px dotted;
+  padding-bottom: 5px;
+  border-color: black;
 }
