@@ -20,6 +20,7 @@ router.get('/findall', async (req, res) => {
   }
 });
 
+// localhost:5001/users/signup
 router.post('/signup', async (req, res) => {
   try {
     console.log(req.body)
@@ -41,17 +42,14 @@ router.post('/signup', async (req, res) => {
       password: bcrypt.hashSync(password, 10), // Passwort hashen
     });
 
-    const token = 'Bearer: ' + jwt.sign({ id: user.id }, JWT_SECRET, { 
-      expiresIn: '1h' 
-    });
-
-    res.json({ token });
+    res.status(200).json({msg: 'Account created succesfully!'});
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Error 500: Internal Server Error');
   }
 });
 
+// localhost:5001/users/login
 router.post('/login', async (req, res) => {
   try {
     console.log(req.body)
@@ -75,7 +73,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Wrong password or username/email' });
     }
 
-    const token = 'Bearer: ' + jwt.sign({ id: user.id }, JWT_SECRET, { 
+    const token = 'Bearer: ' + jwt.sign({ username: user.username }, JWT_SECRET, { 
       expiresIn: '1h' 
     });
 
