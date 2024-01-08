@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Posts } = require("../models");
+const verifyToken = require("./auth");
 
 router.get("/:threadId", async (req, res) => {
   const threadId = req.params.threadId;
@@ -8,7 +9,7 @@ router.get("/:threadId", async (req, res) => {
   res.json(posts);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const post = req.body;
   await Posts.create(post);
   res.json(post);
