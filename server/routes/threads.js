@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { Threads } = require("../models");
+const { Posts } = require("../models"); // assuming your Posts model is defined
+const verifyToken = require("./auth");
 
 router.get("/", async (req, res) => {
   //sequelize function which goes through all tables and stores it in variable
@@ -14,12 +16,13 @@ router.get("/byId/:id", async (req, res) => {
   res.json(thread);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   //important that we receive data from an input or form as json (object)
   const thread = req.body;
   //sequelize function which creates entry in database
   await Threads.create(thread);
   res.json(thread);
 });
+
 
 module.exports = router;

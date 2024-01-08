@@ -3,24 +3,45 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../helpers/AuthProvider";
+import { useEffect } from 'react';
 
 function CreateThread() {
   let navigate = useNavigate();
+  let auth = useAuth();
+
+  useEffect(() => {
+    if (!auth.authState) {
+      navigate("/login");
+    }
+  }, [auth, navigate]);
+
+
   const initialValue = {
     title: "",
     threadText: "",
-    username: "",
+    username: auth.user,
   };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
     threadText: Yup.string().required(),
-    username: Yup.string().min(3).max(15).required(),
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:5001/", data).then((response) => {
+    const token = localStorage.getItem("accessToken");
+    axios
+    .post("http://localhost:5001/", data, {
+      headers: {
+        'auth-token': `Bearer ${token}`
+      }})
+    .then((response) => {
       navigate("/");
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 400) {
+        alert("Please login or register to use this function");
+      }
     });
   };
 
@@ -39,9 +60,6 @@ function CreateThread() {
           <label>Thread: </label>
           <ErrorMessage name="threadText" component="span"></ErrorMessage>
           <Field id="inputThreadText" name="threadText" placeholder="Text..." />
-          <label>Username: </label>
-          <ErrorMessage name="username" component="span"></ErrorMessage>
-          <Field id="inputUsername" name="username" placeholder="Username..." />
           <button type="submit">Create Thread</button>
         </Form>
       </Formik>
