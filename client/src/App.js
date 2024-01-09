@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
@@ -5,6 +6,24 @@ import CreateThread from "./pages/createThread";
 import Thread from "./pages/Thread";
 
 function App() {
+  const [isLoginPopupOpen, setLoginPopupOpen] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  const handleLoginClick = () => {
+    setLoginPopupOpen(true);
+  };
+
+  const handleLoginClose = () => {
+    setLoginPopupOpen(false);
+  };
+
+  const handleLogin = (username) => {
+    // additional code for login
+    setLoggedInUser(username);
+  };
+
+  
+
   return (
     
       <Router>

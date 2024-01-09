@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../helpers/AuthProvider";
 
 function Thread() {
+  let auth = useAuth();
   let { id } = useParams();
   const [threadObject, setThreadObject] = useState({});
   const [postObjects, setPostObjects] = useState([]);
@@ -17,17 +19,33 @@ function Thread() {
       setPostObjects(response.data);
     });
   }, [id]);
-
+ 
   const addPost = () => {
+    const token = localStorage.getItem("accessToken");
+    if (newPost) {
     axios
-      .post("http://localhost:5001/posts", { postText: newPost, ThreadId: id })
+      .post(
+        "http://localhost:5001/posts",
+        { postText: newPost, ThreadId: id },
+        {
+          headers: {
+            'auth-token': `Bearer ${token}`
+          }
+        }
+      )
       .then((response) => {
         const postToAdd = { postText: newPost };
         setPostObjects([...postObjects, postToAdd]);
         setNewPost("");
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          alert("Please login or register to use this function");
+        }
       });
-  };
-
+    } else {alert("Field is empty")}
+    };
+  
   return (
     <div className="threadPageBody">
       <div className="threadPageLeft">
