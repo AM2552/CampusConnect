@@ -6,6 +6,7 @@ const verifyToken = require("./auth");
 
 router.get("/", async (req, res) => {
   //sequelize function which goes through all tables and stores it in variable
+  
   const listOfThreads = await Threads.findAll();
   res.json(listOfThreads);
 });
