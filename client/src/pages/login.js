@@ -35,8 +35,6 @@ function Login() {
           }}
         />
       </div>
-
-      
       <div className="registerButtonContainer">
       <button onClick={login} className="loginBtn">Login</button>
       </div>
