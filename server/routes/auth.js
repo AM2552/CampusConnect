@@ -23,24 +23,6 @@ function verifyToken(req, res, next) {
     }
 }
 
-async function getUid(req, res, next) {
-    const token = req.header('auth-token').split(' ')[1];
-  
-    if (!token) {
-      return res.status(401).send('Access Denied, Code 1');
-    }
-  
-    try {
-      const payload = jwt.verify(token, JWT_SECRET);
-
-      req.userid = payload.uid;
-      console.log(req.userid)
-      next();
-    } catch (err) {
-      return res.status(401).send('Access Denied Code 2: ' + err);
-    }
-  }
-
 async function restricted(req, res, next) {
     const token = req.header('auth-token').split(' ')[1];
     const mod = req.header('authorization');
@@ -79,5 +61,4 @@ async function restricted(req, res, next) {
   }
 
 module.exports = restricted;
-module.exports = getUid;
 module.exports = verifyToken;

@@ -1,42 +1,43 @@
 const express = require("express");
-const router = express.Router();
-const { Threads } = require("../models");
-const { Posts } = require("../models"); // assuming your Posts model is defined
+const { Threads, Posts } = require("../models");
 const verifyToken = require("./auth");
 const restricted = require("./auth");
 
-router.get("/", async (req, res) => {
-  //sequelize function which goes through all tables and stores it in variable
+const router = express.Router();
+
+const getAllThreads = async (req, res) => {
   const listOfThreads = await Threads.findAll();
   res.json(listOfThreads);
-});
+};
 
-router.get("/byId/:id", async (req, res) => {
+const getThreadById = async (req, res) => {
   const id = req.params.id;
   const thread = await Threads.findByPk(id);
   res.json(thread);
-});
+};
 
-router.post("/", verifyToken, async (req, res) => {
-  //important that we receive data from an input or form as json (object)
+const createThread = async (req, res) => {
   const thread = req.body;
-  //sequelize function which creates entry in database
   await Threads.create(thread);
   res.json(thread);
-});
+};
 
-
-router.delete("/:id", verifyToken, restricted, async (req, res) => {
+const deleteThread = async (req, res) => {
   const id = req.params.id;
   
-  // Delete associated posts first to maintain referential integrity
   await Posts.destroy({ where: { ThreadId: id } });
-  
-  // Then delete the thread
   await Threads.destroy({ where: { id: id } });
   
   res.json({ message: "Thread and associated posts deleted successfully" });
-});
+};
+
+router.get("/", getAllThreads);
+router.get("/byId/:id", getThreadById);
+router.post("/", verifyToken, createThread);
+router.delete("/:id", verifyToken, restricted, deleteThread);
+
+module.exports = router;
+
 
 
 module.exports = router;
