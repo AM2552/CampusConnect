@@ -15,12 +15,16 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
 
+      moderator: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      }
+
     });
     
-/*    Users.associate = (models) => {
+    Users.associate = (models) => {
       Users.hasMany(models.Posts)
     }
-*/
     return Users;
 
   }; 

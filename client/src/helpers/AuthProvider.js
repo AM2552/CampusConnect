@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("accessToken") || "");
   const [authState, setAuthState] = useState(false)
+  const [modState, setModState] = useState(false)
   const navigate = useNavigate();
   const loginAction = async (data) => {
     axios
@@ -17,6 +18,9 @@ const AuthProvider = ({ children }) => {
       setUser(res.data.username);
       setToken(res.data.token);
       setAuthState(true);
+      if(res.data.mod){
+        setModState(true);
+      }
       alert("Logged in as " + res.data.username);
       navigate("/");
     })
@@ -36,7 +40,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, authState, loginAction, logOut }}>
+    <AuthContext.Provider value={{ token, user, authState, modState, setModState, loginAction, logOut }}>
       {children}
     </AuthContext.Provider>
   );

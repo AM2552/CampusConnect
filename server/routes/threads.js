@@ -3,6 +3,7 @@ const router = express.Router();
 const { Threads } = require("../models");
 const { Posts } = require("../models"); // assuming your Posts model is defined
 const verifyToken = require("./auth");
+const restricted = require("./auth");
 
 router.get("/", async (req, res) => {
   //sequelize function which goes through all tables and stores it in variable
@@ -22,6 +23,19 @@ router.post("/", verifyToken, async (req, res) => {
   //sequelize function which creates entry in database
   await Threads.create(thread);
   res.json(thread);
+});
+
+
+router.delete("/:id", verifyToken, restricted, async (req, res) => {
+  const id = req.params.id;
+  
+  // Delete associated posts first to maintain referential integrity
+  await Posts.destroy({ where: { ThreadId: id } });
+  
+  // Then delete the thread
+  await Threads.destroy({ where: { id: id } });
+  
+  res.json({ message: "Thread and associated posts deleted successfully" });
 });
 
 
