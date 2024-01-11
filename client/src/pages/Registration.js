@@ -23,7 +23,9 @@ function Registration() {
     let navigate = useNavigate();
     let auth = useAuth();
   return (
-    <div className="loginContainer">
+    <div className="mainDivReg">
+      <label className="registerLabelDiv">Register</label>
+    <div className="registrationContainer">
       <Formik
         initialValues={{ username: "", email: "", password: "" }}
         validationSchema={RegistrationSchema}
@@ -52,21 +54,40 @@ function Registration() {
       >
         {({ isSubmitting }) => (
           <Form>
-            <label>Username:</label>
-            <Field type="text" name="username" />
-            <ErrorMessage name="username" component="div" />
-            <label>Email:</label>
-            <Field type="email" name="email" />
-            <ErrorMessage name="email" component="div" />
-            <label>Password:</label>
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" />
-            <button type="submit" disabled={isSubmitting}>
+            <div>
+            <Field 
+            type="text" 
+            name="username" 
+            className="regUserName" 
+            placeholder="Enter a Username"/>
+            <ErrorMessage name="username" component="div" className="errorUser"/>
+            </div>
+            <div>
+            <Field 
+            type="email" 
+            name="email" 
+            className="regUserEmail"
+            placeholder="Enter your Email"/>
+            <ErrorMessage name="email" component="div" className="errorUser" />
+            </div>
+            <div>
+            <Field 
+            type="password" 
+            name="password"
+            className="regUserPwd"
+            placeholder="Enter a password"/>
+            <ErrorMessage name="password" component="div" className="errorUser" />
+            </div>
+            <div className="regPageBtnDiv">
+            <button type="submit" disabled={isSubmitting} 
+            className="regPageBtn">
               Register
             </button>
+            </div>
           </Form>
         )}
       </Formik>
+    </div>
     </div>
   );
 }

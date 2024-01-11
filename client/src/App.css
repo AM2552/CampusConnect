@@ -65,7 +65,7 @@ footer {
 }
 
 #createButton:hover {
-  background-color: rgb(0, 63, 119);;
+  background-color: rgb(165, 102, 19);;
 }
 
 
@@ -360,7 +360,9 @@ footer {
   color: #ffffff;
 }
 
-.registerButtonContainer {
+
+/*login page*/
+.lgnBtncontainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -388,8 +390,17 @@ footer {
 
 .loginContainer1 {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-top: 17px;
+}
+
+.loginContainer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
-  padding-top: 10px;
 }
 
 .lgCon1 {
@@ -399,7 +410,14 @@ footer {
   border-radius: 5px;
   font-size: 16px;
   background-color: transparent;
+  color: #fff;
 }
+
+.lgCon1:focus {
+  /**/
+}
+
+
 
 .lgCon2 {
   padding: 10px;
@@ -408,6 +426,7 @@ footer {
   border-radius: 5px;
   font-size: 16px;
   background-color: transparent;
+  color: #fff;
 }
 
 .loginBtn {
@@ -426,11 +445,11 @@ footer {
 }
 
 .loginBtn:hover {
-  background-color: #7dd159; 
+  background-color: #56be2a; 
   color: #ffffff;
 }
 
-.lgnBtncontainer {
+.registerButtonContainer {
   padding-top: 10px;
   display: flex;
   justify-content: center;
@@ -443,3 +462,109 @@ footer {
   font-size: 25px;
   color: #ffffff;
 }
+
+.mainLoginDiv {
+  margin-top: 20px;
+}
+
+.loginLabelDiv{
+  font-size: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/*register Page*/
+
+.mainDivReg {
+  margin-top: 20px;
+}
+
+.regUserName {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regUserEmail{
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regUserPwd {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regPageBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.regPageBtnDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regPageBtn:hover {
+  background-color: #3498db; 
+  color: #4ef166;
+}
+
+.registerLabelDiv{
+  font-size: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.registrationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-top: 17px;
+}
+
+.mainDivReg {
+  margin-top: 20px;
+}
+
+
+/*error messages*/
+
+.errorUser {
+  font-size: 15px; 
+  color: rgba(255, 47, 47, 0.978);
+  margin-bottom: 5px;
+}
+

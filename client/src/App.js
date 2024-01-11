@@ -44,15 +44,13 @@ function App() {
   
 
   return (
-    
       <Router>
           <AuthProvider>
           <aside className="aside1"></aside>
           <header className="header">
             <Link to="/" className="homeCSS">Home Page</Link>
             <Link to="/login" className="loginCSS">Login</Link>
-            
-            <Link to="/logout" className="logoutCSS">Logout</Link>
+            <Link to="/logout" className="logoutCSS" >Logout</Link>
           </header>
           <main className="main">
             <Routes>
@@ -64,7 +62,10 @@ function App() {
             <Route path="/register" element={<Registration />} />
             </Routes>
           </main>
-          <aside className="aside2"> <Link id="createButton" to="/createthread">Create a Thread</Link></aside>
+          <aside className="aside2"> 
+          <Link id="createButton" to="/createthread">Create Thread</Link>
+          </aside>
+          <a class="twitter-timeline" href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw">Tweets by XDevelopers</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <footer className="footer">
 
           </footer>

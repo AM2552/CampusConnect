@@ -14,31 +14,32 @@ function Login() {
 
   };
   return (
-    <div>
+    <div className="mainLoginDiv" >
+      <label className="loginLabelDiv">Login</label>
       <div className="loginContainer1">
-        <label className="userLabel">Username or Email Address:</label>
         <input
           className="lgCon1"
           type="text"
+           placeholder="Username or Email"
           onChange={(event) => {
             setUsername(event.target.value);
           }}
         />
         </div>
         <div className="loginContainer2">
-        <label className="userLabel">Password:</label>
         <input
           className="lgCon2"
           type="password"
+          placeholder="password"
           onChange={(event) => {
             setPassword(event.target.value);
           }}
         />
       </div>
-      <div className="registerButtonContainer">
+      <div className="lgnBtncontainer">
       <button onClick={login} className="loginBtn">Login</button>
       </div>
-      <div className="lgnBtncontainer">
+      <div className="registerButtonContainer">
       <Link to="/register">
           <button className="registerBtn">Register instead</button>
         </Link>
