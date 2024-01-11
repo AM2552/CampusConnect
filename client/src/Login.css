@@ -1,0 +1,129 @@
+body, html {
+    height: 100vh;
+}
+  
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 15% auto 25%;
+    grid-template-rows: 15% 10% auto 10%;
+    grid-template-areas:
+      "header header header"
+      "aside1 main aside2"
+      "aside1 main aside3"
+      "footer footer footer";
+}
+
+.lgnBtncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.registerBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #3498db;
+    color: #3498db; 
+    background-color: transparent; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+  
+  .registerBtn:hover {
+    background-color: #f07272; 
+    color: #ffffff;
+}
+  
+.loginContainer1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-top: 17px;
+}
+  
+.loginContainer2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+.lgCon1 {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #fff;
+}
+  
+.lgCon1:focus {
+    /**/
+}
+  
+  
+  
+.lgCon2 {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #fff;
+}
+  
+.loginBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #3498db;
+    color: #3498db; 
+    background-color: transparent; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+  
+.loginBtn:hover {
+    background-color: #56be2a; 
+    color: #ffffff;
+}
+  
+.registerButtonContainer {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+  
+.userLabel {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #ffffff;
+}
+  
+.mainLoginDiv {
+    margin-top: 20px;
+}
+  
+.loginLabelDiv{
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateThread from "./pages/createThread";
 import Thread from "./pages/Thread";
@@ -13,54 +13,49 @@ import { useAuth } from "./helpers/AuthProvider";
 function Navigation() {
   const auth = useAuth();
 
+  const renderAuthButton = () => {
+
+
+    if (auth.authState) {
+      // User is logged in, display logout button
+      return (
+      <div>
+      <Link to="/" className="homeCSS">Home Page</Link>
+      <Link to="/logout" className="logoutCSS">Logout</Link>
+      </div>
+      )
+      
+    } else { 
+      // User is not logged in, display login button
+      return <Navigate to="/login"/>
+    }
+  };
+
   return (
-    <nav>
-      <Link to="/"> Home Page</Link>
-      {auth.authState && <Link to="/createthread"> Create a Thread</Link>}
-      {auth.authState && <Link to="/logout"> Logout</Link>}
-      {!auth.authState && <Link to="/login"> Login</Link>}
-      {!auth.authState && <Link to="/register"> Register</Link>}
-    </nav>
+    <>
+      {renderAuthButton()}
+    </>
   );
 }
 
 function App() {
-  const [isLoginPopupOpen, setLoginPopupOpen] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState(null);
-
-  const handleLoginClick = () => {
-    setLoginPopupOpen(true);
-  };
-
-  const handleLoginClose = () => {
-    setLoginPopupOpen(false);
-  };
-
-  const handleLogin = (username) => {
-    // additional code for login
-    setLoggedInUser(username);
-  };
-
-  
-
+const auth = useAuth();
   return (
       <Router>
           <AuthProvider>
           <aside className="aside1"></aside>
           <header className="header">
-            <Link to="/" className="homeCSS">Home Page</Link>
-            <Link to="/login" className="loginCSS">Login</Link>
-            <Link to="/logout" className="logoutCSS" >Logout</Link>
+            <Navigation />
           </header>
           <main className="main">
-            <Routes>
-              <Route path="/" exact element={<Home />} />
-              <Route path="/thread/:id" exact element={<Thread />} />
-              <Route path="/createthread" exact element={<CreateThread/>} />
-              <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
+          <Routes>
+          <Route path="/" exact element={<Home />} />
+            <Route path="/thread/:id" exact element={<Thread />} />
+            <Route path="/createthread" exact element={<CreateThread/>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
-            </Routes>
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
           </main>
           <aside className="aside2"> 
           <Link id="createButton" to="/createthread">Create Thread</Link>
@@ -71,8 +66,6 @@ function App() {
           </footer>
           </AuthProvider>
       </Router>
-      
   );
 }
-
 export default App;
