@@ -10,12 +10,12 @@ import Registration from "./pages/Registration";
 import AuthProvider from './helpers/AuthProvider';
 import { useAuth } from "./helpers/AuthProvider";
 
+
+
 function Navigation() {
   const auth = useAuth();
 
   const renderAuthButton = () => {
-
-
     if (auth.authState) {
       // User is logged in, display logout button
       return (
@@ -24,7 +24,6 @@ function Navigation() {
       <Link to="/logout" className="logoutCSS">Logout</Link>
       </div>
       )
-      
     } else { 
       // User is not logged in, display login button
       return <Navigate to="/login"/>
@@ -37,6 +36,32 @@ function Navigation() {
     </>
   );
 }
+
+function Koala() {
+  const auth = useAuth();
+
+  const Koala1 = () => {
+    if (auth.authState) {
+      // User is logged in, display logout button
+      return (
+      <div>
+        <Link id="createButton" to="/createthread">Create Thread</Link>
+      </div>
+      )
+    } else { 
+    }
+  };
+  return (
+    <>
+      {Koala1()}
+    </>
+  );
+}
+
+
+
+
+
 
 function App() {
 const auth = useAuth();
@@ -57,13 +82,14 @@ const auth = useAuth();
             <Route path="/logout" element={<Logout />} />
           </Routes>
           </main>
+          
           <aside className="aside2"> 
-          <Link id="createButton" to="/createthread">Create Thread</Link>
+            <Koala/>
           </aside>
-          <a class="twitter-timeline" href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw">Tweets by XDevelopers</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <footer className="footer">
 
-          </footer>
+          
+          <a class="twitter-timeline" href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw">Tweets by XDevelopers</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <footer className="footer"></footer>
           </AuthProvider>
       </Router>
   );
