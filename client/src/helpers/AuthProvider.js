@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
       .then((res) => {
         localStorage.setItem("accessToken", res.data.token.split(' ')[1]);
         localStorage.setItem("user", res.data.username);
-        localStorage.setItem("modState", res.data.mod);
+        localStorage.setItem("modState", res.data.mod == 1);
         setUser(res.data.username);
         setToken(res.data.token);
         setAuthState(true);

@@ -1,7 +1,6 @@
 const express = require("express");
 const { Threads, Posts } = require("../models");
-const verifyToken = require("./auth");
-const restricted = require("./auth");
+const { verifyToken, authorAndMod, authorOnly, modOnly } = require("./auth");
 
 const router = express.Router();
 
@@ -31,10 +30,22 @@ const deleteThread = async (req, res) => {
   res.json({ message: "Thread and associated posts deleted successfully" });
 };
 
+const archiveThread = async (req, res) => {
+  const id = req.params.id;
+  res.json({ message: "Thread and associated posts deleted successfully" });
+};
+
+const closeThread = async (req, res) => {
+  const id = req.params.id;
+  res.json({ message: "Thread and associated posts deleted successfully" });
+};
+
 router.get("/", getAllThreads);
 router.get("/byId/:id", getThreadById);
 router.post("/", verifyToken, createThread);
-router.delete("/:id", verifyToken, restricted, deleteThread);
+router.delete("/:id", verifyToken, modOnly, deleteThread);
+router.put("/:id", verifyToken, modOnly, archiveThread);
+router.put("/:id", verifyToken, modOnly, closeThread);
 
 module.exports = router;
 

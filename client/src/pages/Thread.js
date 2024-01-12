@@ -9,6 +9,9 @@ function Thread() {
   const [threadObject, setThreadObject] = useState({});
   const [postObjects, setPostObjects] = useState([]);
   const [newPost, setNewPost] = useState("");
+  const [updatedPost, setUpdatedPost] = useState(""); // Add this line
+
+  const [editingPostId, setEditingPostId] = useState(null); // Add this line
 
   useEffect(() => {
     axios.get(`http://localhost:5001/byId/${id}`).then((response) => {
@@ -19,7 +22,7 @@ function Thread() {
       setPostObjects(response.data);
     });
   }, [id]);
- 
+
   const addPost = () => {
     const token = localStorage.getItem("accessToken");
     if (newPost) {
@@ -49,38 +52,70 @@ function Thread() {
       alert("Field is empty")
     }
   };
-  
-  
 
-    const removePost = (post) => {
-      const token = localStorage.getItem("accessToken");
-      console.log(post)
-      let postId = post.id
-      if (postId) {
-        axios
-          .delete(
-            `http://localhost:5001/posts/${id}/${postId}`,
-            {
-              headers: {
-                'auth-token': `Bearer ${token}`,
-                'authority': auth.mod
-              }
+  const removePost = (post) => {
+    const token = localStorage.getItem("accessToken");
+    console.log(post)
+    let postId = post.id
+    if (postId) {
+      axios
+        .delete(
+          `http://localhost:5001/posts/${id}/${postId}`,
+          {
+            headers: {
+              'auth-token': `Bearer ${token}`,
+              'authority': auth.mod
             }
-          )
-          .then((response) => {
-            setPostObjects(postObjects.filter(post => post.id !== postId));
-          })
-          .catch((error) => {
-            if (error.response && error.response.status === 400) {
-              alert("Please login or register to use this function");
+          }
+        )
+        .then((response) => {
+          setPostObjects(postObjects.filter(post => post.id !== postId));
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 400) {
+            alert("Please login or register to use this function");
+          }
+        });
+    } else {
+      alert("Post ID is not provided");
+    }
+  };
+
+  const editPost = (post, updatedText) => {
+    const token = localStorage.getItem("accessToken");
+    let postId = post.id
+    if (postId && updatedText) {
+      axios
+        .put(
+          `http://localhost:5001/posts/${id}/${postId}`,
+          { postText: updatedText },
+          {
+            headers: {
+              'auth-token': `Bearer ${token}`,
+              'authority': auth.mod
             }
-          });
-      } else {
-        alert("Post ID is not provided");
-      }
-    };
-    
-    
+          }
+        )
+        .then((response) => {
+          // Update the post in the state
+          setPostObjects(postObjects.map(post => post.id === postId ? { ...post, postText: updatedText } : post));
+          setEditingPostId(null); // Add this line
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 400) {
+            alert("Please login or register to use this function");
+          }
+        });
+    } else {
+      alert("Post ID or updated text is not provided");
+    }
+  };
+
+  const startEditing = (post) => {
+    setEditingPostId(post.id);
+    setUpdatedPost(post.postText);
+  };
+
   return (
     <div className="threadPage">
       <div className="left">
@@ -104,19 +139,43 @@ function Thread() {
         </div>
         <div className="listOfPosts"></div>
         {postObjects.map((post, key) => {
-        return (
-        <div key={key} className="post">
-          <div className="postText">{post.postText}</div>
-            <div className="postAuthor">{post.username}</div>
-              {(auth.mod || post.username === auth.user) && (
-              <button onClick={() => removePost(post)}>Delete</button>
-            )}
-          </div>
+          return (
+            <div key={key} className="post">
+              <div className="postText">{post.postText}</div>
+              <div className="postAuthor">{post.username}</div>
+              {(auth.modState || post.username === auth.user) && (
+                <>
+                  <button onClick={() => removePost(post)}>Delete</button>
+                  {editingPostId === post.id ? (
+                    <form onSubmit={(event) => {
+                      event.preventDefault();
+                      editPost(post, updatedPost);
+                      setEditingPostId(null); // Add this line
+                    }}>
+                      <input
+                        type="text"
+                        placeholder="Updated post text..."
+                        value={updatedPost}
+                        onChange={(event) => {
+                          setUpdatedPost(event.target.value);
+                        }}
+                      />
+                      <button type="submit">Submit</button>
+                    </form>
+                  ) : (
+                    <button onClick={() => startEditing(post)}>Edit</button>
+                  )}
+                </>
+              )}
+            </div>
           );
-          })}
+        })}
       </div>
     </div>
   );
+  
+  
 }
 
 export default Thread;
+

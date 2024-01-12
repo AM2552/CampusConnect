@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const { Op } = require("sequelize");
+const { verifyToken, modOnly } = require("./auth");
 
 const router = express.Router();
 const JWT_SECRET = 'jwt_secret_123';
@@ -39,11 +40,30 @@ const loginUser = async (req, res) => {
   if (!user || !bcrypt.compareSync(password, user.password)) {
     return res.status(400).json({ msg: 'Wrong password or username/email' });
   }
+  if (user.banned) {
+    return res.status(401).json({ msg: 'This user is banned!' });
+  }
 
   const token = 'Bearer: ' + jwt.sign({ uid: user.id }, JWT_SECRET, { expiresIn: '1h' });
-  res.json({ username: user.username, email : user.email, token, mod: user.moderator === 1 });
+  res.json({ username: user.username, email : user.email, token, mod: user.moderator});
 };
 
+const banUser = async (req, res) => {
+  const { username } = req.body;
+  const user = await User.findOne({ where: { username } });
+
+  if (!user) {
+    return res.status(400).json({ msg: 'User not found.' });
+  }
+
+  user.banned = true;
+  await user.save();
+
+  res.status(200).json({ msg: 'User has been banned successfully.' });
+};
+
+
+router.post('/ban', verifyToken, modOnly,banUser);
 router.post('/signup', createUser);
 router.post('/login', loginUser);
 

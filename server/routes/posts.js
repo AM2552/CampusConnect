@@ -1,7 +1,7 @@
 const express = require("express");
 const { Posts, User } = require("../models");
-const verifyToken = require("./auth");
-const restricted = require("./auth");
+const { verifyToken, authorAndMod, authorOnly, modOnly } = require("./auth");
+
 
 const router = express.Router();
 
@@ -45,8 +45,24 @@ const deletePost = async (req, res) => {
   res.json({ message: "Post deleted successfully" });
 };
 
+const editPost = async (req, res) => {
+  const postId = req.params.postId;
+  const threadId = req.params.threadId;
+  const updatedPost = req.body;
+
+  const post = await Posts.findOne({ where: { id: postId, ThreadId: threadId } });
+
+  if (!post) {
+    return res.status(404).send(`Post not found ${postId}/${threadId}`);
+  }
+
+  await Posts.update(updatedPost, { where: { id: postId, ThreadId: threadId } });
+  res.json(post);
+};
+
+router.put("/:threadId/:postId", verifyToken, editPost, editPost);
 router.get("/:threadId", getPosts);
 router.post("/", verifyToken, createPost);
-router.delete("/:threadId/:postId", verifyToken, restricted, deletePost);
+router.delete("/:threadId/:postId", verifyToken, deletePost, deletePost);
 
 module.exports = router;
