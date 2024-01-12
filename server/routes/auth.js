@@ -39,7 +39,7 @@ async function authorAndMod(req, res, next) {
     if (req.params.postId) {
       const postId = req.params.postId;
       const post = await Posts.findOne({ where: { id: postId } });
-      if (post.UserId !== userid && user.moderator !== 1) {
+      if (post.UserId !== userid && !user.moderator) {
         return res.status(401).send('Error 401: Access Denied, Code 30');
       }
     }
@@ -79,7 +79,7 @@ async function modOnly(req, res, next) {
     const payload = jwt.verify(token, JWT_SECRET);
     const userid = payload.uid;
     const user = await User.findByPk(userid);
-    if (!user || user.moderator !== 1) return res.status(401).send('Error 401: Access Denied, Code 30');
+    if (!user || !user.moderator) return res.status(401).send('Error 401: Access Denied, Code 30 ' + user.moderator);
     next();
   } catch (err) {
     res.status(401).send('Error 401: Access Denied Code 41: ' + err);

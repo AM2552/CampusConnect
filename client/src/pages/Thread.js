@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../helpers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 function Thread() {
+
+  const navigate = useNavigate();
+  const serverUrl = 'http://localhost:5001';
+
   let auth = useAuth();
   let { id } = useParams();
   const [threadObject, setThreadObject] = useState({});
@@ -14,11 +19,11 @@ function Thread() {
   const [editingPostId, setEditingPostId] = useState(null); // Add this line
 
   useEffect(() => {
-    axios.get(`http://localhost:5001/byId/${id}`).then((response) => {
+    axios.get(`${serverUrl}/byId/${id}`).then((response) => {
       setThreadObject(response.data);
     });
 
-    axios.get(`http://localhost:5001/posts/${id}`).then((response) => {
+    axios.get(`${serverUrl}/posts/${id}`).then((response) => {
       setPostObjects(response.data);
     });
   }, [id]);
@@ -28,7 +33,7 @@ function Thread() {
     if (newPost) {
       axios
         .post(
-          "http://localhost:5001/posts",
+          `${serverUrl}/posts`,
           { postText: newPost, ThreadId: id },
           {
             headers: {
@@ -39,7 +44,7 @@ function Thread() {
         .then((response) => {
           setNewPost("");
           // Refetch the posts after adding a new one
-          axios.get(`http://localhost:5001/posts/${id}`).then((response) => {
+          axios.get(`${serverUrl}/posts/${id}`).then((response) => {
             setPostObjects(response.data);
           });
         })
@@ -60,11 +65,10 @@ function Thread() {
     if (postId) {
       axios
         .delete(
-          `http://localhost:5001/posts/${id}/${postId}`,
+          `${serverUrl}/posts/${id}/${postId}`,
           {
             headers: {
               'auth-token': `Bearer ${token}`,
-              'authority': auth.mod
             }
           }
         )
@@ -87,12 +91,11 @@ function Thread() {
     if (postId && updatedText) {
       axios
         .put(
-          `http://localhost:5001/posts/${id}/${postId}`,
+          `${serverUrl}/posts/${id}/${postId}`,
           { postText: updatedText },
           {
             headers: {
               'auth-token': `Bearer ${token}`,
-              'authority': auth.mod
             }
           }
         )
@@ -116,27 +119,94 @@ function Thread() {
     setUpdatedPost(post.postText);
   };
 
+
+  const deleteThread = async () => {
+    const token = localStorage.getItem("accessToken");
+    let id = threadObject.id;
+    try {
+      const response = await axios.delete(`${serverUrl}/threads/${id}`, {
+        headers: {
+          'auth-token': `Bearer ${token}`,
+        }
+      });
+      alert("Thread succesfully deleted");
+      navigate("/");
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
+  const archiveThread = async () => {
+    const token = localStorage.getItem("accessToken");
+    let id = threadObject.id;
+    try {
+      const response = await axios.put(`${serverUrl}/threads/${id}/archive`, {}, {
+        headers: {
+          'auth-token': `Bearer ${token}`,
+        }
+      });
+      alert("Thread Archived");
+      setThreadObject(response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
+  const closeThread = async () => {
+    const token = localStorage.getItem("accessToken");
+    let id = threadObject.id;
+    try {
+      const response = await axios.put(`${serverUrl}/threads/${id}/close`, {}, {
+        headers: {
+          'auth-token': `Bearer ${token}`,
+        }
+      });
+      alert("Thread Closed");
+      setThreadObject(response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
   return (
     <div className="threadPage">
       <div className="left">
-        <div classname="threadObject">
+        <div className="threadObject">
           <div className="threadObjectTitle">{threadObject.title}</div>
           <div className="threadObjectText">{threadObject.threadText}</div>
           <div className="threadObjectUsername">{threadObject.username}</div>
+          {(auth.modState) && (
+            <>
+              <button onClick={deleteThread}>Delete Thread</button>
+            </>
+          )}
+          {(auth.modState && !threadObject.closed) && (
+            <>
+              <button onClick={closeThread}>Close Thread</button>
+            </>
+          )}
+          {(auth.modState && !threadObject.archived) && (
+            <>
+              <button onClick={archiveThread}>Archive Thread</button>
+            </>
+          )}
         </div>
       </div>
       <div className="right">
-        <div className="addPostField">
-          <input
-            type="text"
-            placeholder="Post your comment..."
-            value={newPost}
-            onChange={(event) => {
-              setNewPost(event.target.value);
-            }}
-          />
-          <button onClick={addPost}>Add Post</button>
-        </div>
+        {!threadObject.closed && !threadObject.archived && (
+          <div className="addPostField">
+            <input
+              type="text"
+              placeholder="Post your comment..."
+              value={newPost}
+              onChange={(event) => {
+                setNewPost(event.target.value);
+              }}
+            />
+            <button onClick={addPost}>Add Post</button>
+          </div>
+        )}
         <div className="listOfPosts"></div>
         {postObjects.map((post, key) => {
           return (
@@ -144,8 +214,10 @@ function Thread() {
               <div className="postText">{post.postText}</div>
               <div className="postAuthor">{post.username}</div>
               {(auth.modState || post.username === auth.user) && (
+                <button onClick={() => removePost(post)}>Delete</button>
+              )}
+              {post.username === auth.user && (
                 <>
-                  <button onClick={() => removePost(post)}>Delete</button>
                   {editingPostId === post.id ? (
                     <form onSubmit={(event) => {
                       event.preventDefault();
@@ -173,9 +245,7 @@ function Thread() {
       </div>
     </div>
   );
-  
-  
-}
+}  
 
 export default Thread;
 
