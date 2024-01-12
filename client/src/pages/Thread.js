@@ -196,7 +196,7 @@ function Thread() {
           <div key={key} className="post">
             <div className="postText">{post.postText}</div>
             <div className="postAuthor">{post.username}</div>
-            {renderButton(auth.modState || post.username === auth.user, () => removePost(post), 'Delete')}
+            {renderButton((auth.modState || post.username === auth.user) && !threadObject.closed, () => removePost(post), 'Delete')}
             {post.username === auth.user && (
               <>
                 {editingPostId === post.id ? (
@@ -208,7 +208,7 @@ function Thread() {
                     <input type="text" placeholder="Updated post text..." value={updatedPost} onChange={e => setUpdatedPost(e.target.value)} />
                     <button type="submit">Submit</button>
                   </form>
-                ) : renderButton(true, () => startEditing(post), 'Edit')}
+                ) : renderButton(!threadObject.closed, () => startEditing(post), 'Edit')}
               </>
             )}
           </div>

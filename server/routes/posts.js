@@ -1,5 +1,5 @@
 const express = require("express");
-const { Posts, User } = require("../models");
+const { Posts, User, Threads } = require("../models");
 const { verifyToken, authorAndMod, authorOnly, modOnly } = require("./auth");
 
 
@@ -23,6 +23,12 @@ const getPosts = async (req, res) => {
 const createPost = async (req, res) => {
   const post = req.body;
   post.UserId = req.userid;
+  const threadid = req.body.ThreadId
+
+  const thread = await Threads.findOne({ where: { id: threadid, closed: false} });
+  if (!thread) {
+    return res.status(404).send(`Thread closed or deleted!`);
+  }
 
   const newPost = await Posts.create(post);
   post.id = newPost.id;
@@ -34,7 +40,12 @@ const createPost = async (req, res) => {
 const deletePost = async (req, res) => {
   const postId = req.params.postId;
   const threadId = req.params.threadId;
-  
+
+  const thread = await Threads.findOne({ where: { id: threadId, closed: false} });
+  if (!thread) {
+    return res.status(404).send(`Thread closed or deleted!`);
+  }
+
   const post = await Posts.findOne({ where: { id: postId, ThreadId: threadId } });
   
   if (!post) {
@@ -49,6 +60,11 @@ const editPost = async (req, res) => {
   const postId = req.params.postId;
   const threadId = req.params.threadId;
   const updatedPost = req.body;
+
+  const thread = await Threads.findOne({ where: { id: threadId, closed: false} });
+  if (!thread) {
+    return res.status(404).send(`Thread closed or deleted!`);
+  }
 
   const post = await Posts.findOne({ where: { id: postId, ThreadId: threadId } });
 
