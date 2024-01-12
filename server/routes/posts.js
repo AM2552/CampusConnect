@@ -60,9 +60,9 @@ const editPost = async (req, res) => {
   res.json(post);
 };
 
-router.put("/:threadId/:postId", verifyToken, editPost, editPost);
+router.put("/:threadId/:postId", verifyToken, authorOnly, editPost);
 router.get("/:threadId", getPosts);
 router.post("/", verifyToken, createPost);
-router.delete("/:threadId/:postId", verifyToken, deletePost, deletePost);
+router.delete("/:threadId/:postId", verifyToken, authorAndMod, deletePost);
 
 module.exports = router;
