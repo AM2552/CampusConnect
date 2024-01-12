@@ -169,83 +169,54 @@ function Thread() {
   };
 
 
+  const renderButton = (condition, onClick, text) => condition && <button onClick={onClick}>{text}</button>;
+
+
   return (
     <div className="threadPage">
       <div className="left">
         <div className="threadObject">
-          <div className="threadObjectTitle">{threadObject.title}</div>
-          <div className="threadObjectText">{threadObject.threadText}</div>
-          <div className="threadObjectUsername">{threadObject.username}</div>
-          {(auth.modState) && (
-            <>
-              <button onClick={deleteThread}>Delete Thread</button>
-            </>
-          )}
-          {(auth.modState && !threadObject.closed) && (
-            <>
-              <button onClick={closeThread}>Close Thread</button>
-            </>
-          )}
-          {(auth.modState && !threadObject.archived) && (
-            <>
-              <button onClick={archiveThread}>Archive Thread</button>
-            </>
-          )}
+          {['title', 'threadText', 'username'].map(prop => <div className={`threadObject${prop}`}>{threadObject[prop]}</div>)}
+          {threadObject.closed && <div className="threadStatus">This thread is closed.</div>}
+          {threadObject.archived && <div className="threadStatus">This thread is archived.</div>}
+          {renderButton(auth.modState, deleteThread, 'Delete Thread')}
+          {renderButton(auth.modState && !threadObject.closed, closeThread, 'Close Thread')}
+          {renderButton(auth.modState && !threadObject.archived, archiveThread, 'Archive Thread')}
         </div>
       </div>
       <div className="right">
         {!threadObject.closed && !threadObject.archived && (
           <div className="addPostField">
-            <input
-              type="text"
-              placeholder="Post your comment..."
-              value={newPost}
-              onChange={(event) => {
-                setNewPost(event.target.value);
-              }}
-            />
+            <input type="text" placeholder="Post your comment..." value={newPost} onChange={e => setNewPost(e.target.value)} />
             <button onClick={addPost}>Add Post</button>
           </div>
         )}
         <div className="listOfPosts"></div>
-        {postObjects.map((post, key) => {
-          return (
-            <div key={key} className="post">
-              <div className="postText">{post.postText}</div>
-              <div className="postAuthor">{post.username}</div>
-              {(auth.modState || post.username === auth.user) && (
-                <button onClick={() => removePost(post)}>Delete</button>
-              )}
-              {post.username === auth.user && (
-                <>
-                  {editingPostId === post.id ? (
-                    <form onSubmit={(event) => {
-                      event.preventDefault();
-                      editPost(post, updatedPost);
-                      setEditingPostId(null); // Add this line
-                    }}>
-                      <input
-                        type="text"
-                        placeholder="Updated post text..."
-                        value={updatedPost}
-                        onChange={(event) => {
-                          setUpdatedPost(event.target.value);
-                        }}
-                      />
-                      <button type="submit">Submit</button>
-                    </form>
-                  ) : (
-                    <button onClick={() => startEditing(post)}>Edit</button>
-                  )}
-                </>
-              )}
-            </div>
-          );
-        })}
+        {postObjects.map((post, key) => (
+          <div key={key} className="post">
+            <div className="postText">{post.postText}</div>
+            <div className="postAuthor">{post.username}</div>
+            {renderButton(auth.modState || post.username === auth.user, () => removePost(post), 'Delete')}
+            {post.username === auth.user && (
+              <>
+                {editingPostId === post.id ? (
+                  <form onSubmit={e => {
+                    e.preventDefault();
+                    editPost(post, updatedPost);
+                    setEditingPostId(null);
+                  }}>
+                    <input type="text" placeholder="Updated post text..." value={updatedPost} onChange={e => setUpdatedPost(e.target.value)} />
+                    <button type="submit">Submit</button>
+                  </form>
+                ) : renderButton(true, () => startEditing(post), 'Edit')}
+              </>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
-}  
+};
 
 export default Thread;
-
+  
