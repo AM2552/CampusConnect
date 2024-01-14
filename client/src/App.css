@@ -1,56 +1,119 @@
-.App {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  flex-direction: column;
-  text-align: center;
-  background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
-  height: 100vh; /* Set the height of .App to 100% of the viewport height */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+body, html {
+  height: 100vh;
 }
 
 body {
   margin: 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 15% auto 25%;
+  grid-template-rows: 15% 10% auto 10%;
+  grid-template-areas:
+    "header header header"
+    "aside1 main aside2"
+    "aside1 main aside3"
+    "footer footer footer";
 }
 
-.thread {
-  width: 400px;
-  height: 300px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
+.aside1  {
+  grid-area: aside1;
+  outline: 1px solid rgb(255, 255, 255);
+}
 
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.header {
+  grid-area: header;
+  outline: 1px solid rgb(255, 255, 255);
+
+
+}
+
+.aside2 {
+  grid-area: aside2;
+  outline: 1px solid rgb(255, 255, 255);
+}
+
+.aside3 {
+  grid-area: aside3;
+  outline: 1px solid rgb(255, 255, 255);
+}
+
+main {
+  grid-area: main;
+  outline: 1px solid rgb(255, 255, 255);
+}
+
+footer {
+  grid-area: footer;
+  outline: 1px solid rgb(255, 255, 255);
+}
+
+#root {
+  background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
+  background-attachment: fixed;
+}
+
+#createButton {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+}
+
+#createButton:hover {
+  background-color: rgb(165, 102, 19);;
+}
+
+
+.thread {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 350px;
+  border-radius: 15px;
+  flex-direction: column;
+  margin-top: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  
 }
 
 .thread:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
 }
 .thread .title {
   flex: 20%;
-  border-bottom: 1px solid lightgray;
-  background-color: rgb(30, 56, 255);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+  background-color: rgba(255, 255, 255, 0.17);
   display: grid;
   place-content: center;
   color: white;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.thread .body {
+  background-color: rgba(255, 255, 255, 0.17);
+  flex: 60%;
+  display: grid;
+  place-content: center;
+  padding-left: 20px;
+}
+
+.thread .footer {
+  flex: 20%;
+  border-top: 1px solid rgba(255, 255, 255, 0.34);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background-color: rgba(255, 255, 255, 0.17);
+  color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .App-header {
@@ -64,24 +127,330 @@ body {
   color: rgb(245, 0, 0);
 }
 
-.thread .body {
-  flex: 60%;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/*thread-Site by ID*/
+.threadObjectTitle {
+  font-size: 50px;
+}
+
+.left {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 350px;
+  border-radius: 15px;
+  flex-direction: column;
+  margin-top: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+}
+
+.threadPageLeft .threadObjectTitle {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: grid;
   place-content: center;
+  color: #83cdf2;
+  padding-top: 15px;
+  
+}
+.threadPageLeft .threadObjectText {
+  color: white;
+  display: grid;
+  place-content: center;
+  padding-left: 10px;
+  padding-top: 30px;
 }
 
-.thread .footer {
-  flex: 20%;
-  border-top: 1px solid lightgray;
+.threadPageLeft .threadObjectUsername {
+  color: aliceblue;
+  padding-left: 4px;
+  padding-top: 4px;
+}
+
+.threadPageBody {
+  display: grid;
+  grid-template-columns: 50% ;
+  grid-template-rows: 100vh;
+  grid-template-areas:
+    "left right";
+}
+
+.threadPageLeft {
+  border-right: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.threadPageRight {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.commentInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none; 
+  border-bottom: 1px solid #ccc; 
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: transparent;
+  color: white
+}
+
+.commentInput::placeholder {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.commentInput:focus {
+  outline: none;
+  border-bottom: 2px solid #0366d6;
+}
+
+.addPostButton {
+  background-color: #2f81ab;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.addPostButton:hover {
+  background-color: rgb(184, 112, 112);
+}
+
+.listOfPosts {
+  padding-top: 18px;
+}
+
+.post {
+  color: rgb(255, 255, 255);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 5px;
+  border-top: 1px dotted;
+  padding-bottom: 5px;
+  border-color: black;
+}
+
+
+
+
+/*LOGIN*/
+/* App.css */
+.loginOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
-  padding-left: 15px;
-  background-color: rgb(30, 56, 255);
-  color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  justify-content: center;
 }
 
-span {
-  color: red;
+.loginModal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+.boxFilter {
+
+}
+
+.centerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loginCSS {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.loginCSS:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.registerCSS {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.registerCSS:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.homeCSS {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db;
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.homeCSS:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+
+.logoutCSS {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.logoutCSS:hover {
+  background-color: #eb4614;
+  border: 2px solid #ff9f81;  
+  color: #ffffff;
+}
+
+
+/*login page*/
+
+
+/*register Page*/
+
+.mainDivReg {
+  margin-top: 20px;
+}
+
+.regUserName {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regUserEmail{
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regUserPwd {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regPageBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.regPageBtnDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regPageBtn:hover {
+  background-color: #3498db; 
+  color: #4ef166;
+}
+
+.registerLabelDiv{
+  font-size: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.registrationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-top: 17px;
+}
+
+.mainDivReg {
+  margin-top: 20px;
+}
+
+
+/*error messages*/
+
+.errorUser {
+  font-size: 15px; 
+  color: rgba(255, 47, 47, 0.978);
+  margin-bottom: 5px;
+}
+

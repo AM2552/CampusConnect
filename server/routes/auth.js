@@ -5,7 +5,8 @@ const JWT_SECRET = 'jwt_secret_123';
 
 function verifyToken(req, res, next) {
     const token = req.header('auth-token').split(' ')[1];
-    if (!token) return res.status(401).send('Access Denied');
+    if (!token) 
+    return res.status(401).send('Access Denied');
 
     try {
         const verified = jwt.verify(token, JWT_SECRET);
