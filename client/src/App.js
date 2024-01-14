@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import CreateThread from "./pages/CreateThread";
+import CreateThread from "./pages/createThread";
 import Thread from "./pages/Thread";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
