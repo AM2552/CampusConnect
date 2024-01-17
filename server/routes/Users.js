@@ -1,88 +1,70 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const { Op } = require("sequelize");
+const { verifyToken, modOnly } = require("./auth");
 
-// Use .env variable for secret, only for testing purpose:
+const router = express.Router();
 const JWT_SECRET = 'jwt_secret_123';
 
+const createUser = async (req, res) => {
+  const { username, password, email } = req.body;
+  const userExists = await User.findOne({ where: { [Op.or]: [{ username }, { email }] } });
 
-router.get('/findall', async (req, res) => {
-  try {
-    const users = await User.findAll();
-
-    res.json(users);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Error 500: Internal Server Error');
+  if (userExists) {
+    return res.status(400).json({ msg: 'Username or Email already in use.' });
   }
-});
 
-// localhost:5001/users/signup
-router.post('/signup', async (req, res) => {
-  try {
-    console.log(req.body)
-    let username = req.body.username;
-    let password = req.body.password;
-    let email = req.body.email;
-    
+  await User.create({
+    username,
+    email,
+    password: bcrypt.hashSync(password, 10),
+    moderator: false,
+  });
 
-    let user = await User.findOne({ where: { username } });
-    let mail = await User.findOne({ where: { email } });
-    if (user || mail) {
-      return res.status(400).json({ msg: 'Username or Email already in use.' });
-    }
-    console.log("No matching user found. creating a new one...")
+  res.status(200).json({msg: 'Account created successfully!'});
+};
 
-    user = await User.create({
-      username,
-      email,
-      password: bcrypt.hashSync(password, 10), // Passwort hashen
-    });
+const loginUser = async (req, res) => {
+  const { usernameOrEmail, password } = req.body;
+  const user = await User.findOne({ 
+    where: { 
+      [Op.or]: [
+        { username: usernameOrEmail },
+        { email: usernameOrEmail }
+      ] 
+    } 
+  });
 
-    res.status(200).json({msg: 'Account created succesfully!'});
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Error 500: Internal Server Error');
+  if (!user || !bcrypt.compareSync(password, user.password)) {
+    return res.status(400).json({ msg: 'Wrong password or username/email' });
   }
-});
-
-// localhost:5001/users/login
-router.post('/login', async (req, res) => {
-  try {
-    console.log(req.body)
-    let usernameOrEmail = req.body.usernameOrEmail;
-    let password = req.body.password;
-
-    let user = await User.findOne({ 
-      where: { 
-        [Op.or]: [
-          { username: usernameOrEmail },
-          { email: usernameOrEmail }
-        ] 
-      } 
-    });
-    if (!user) {
-      return res.status(400).json({ msg: 'Wrong password or username/email' });
-    }
-
-    const isMatch = bcrypt.compareSync(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ msg: 'Wrong password or username/email' });
-    }
-
-    const token = 'Bearer: ' + jwt.sign({ username: user.username }, JWT_SECRET, { 
-      expiresIn: '1h' 
-    });
-
-    res.json({ username: user.username, email : user.email, token });
-
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Error 500 Internal error.');
+  if (user.banned) {
+    return res.status(401).json({ msg: 'This user is banned!' });
   }
-});
+
+  const token = 'Bearer: ' + jwt.sign({ uid: user.id }, JWT_SECRET, { expiresIn: '1h' });
+  res.json({ username: user.username, email : user.email, token, mod: user.moderator});
+};
+
+const banUser = async (req, res) => {
+  const { username } = req.body;
+  const user = await User.findOne({ where: { username } });
+
+  if (!user) {
+    return res.status(400).json({ msg: 'User not found.' });
+  }
+
+  user.banned = true;
+  await user.save();
+
+  res.status(200).json({ msg: 'User has been banned successfully.' });
+};
+
+
+router.post('/ban', verifyToken, modOnly,banUser);
+router.post('/signup', createUser);
+router.post('/login', loginUser);
 
 module.exports = router;

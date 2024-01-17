@@ -14,6 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNULL: false,
     },
+    archived: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    closed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   });
 
   Threads.associate = (models) => {

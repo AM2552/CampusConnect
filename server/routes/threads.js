@@ -1,28 +1,72 @@
 const express = require("express");
-const router = express.Router();
-const { Threads } = require("../models");
-const { Posts } = require("../models"); // assuming your Posts model is defined
-const verifyToken = require("./auth");
+const { Threads, Posts } = require("../models");
+const { verifyToken, modOnly } = require("./auth");
 
-router.get("/", async (req, res) => {
-  //sequelize function which goes through all tables and stores it in variable
+const router = express.Router();
+
+const getAllThreads = async (req, res) => {
   const listOfThreads = await Threads.findAll();
   res.json(listOfThreads);
-});
+};
 
-router.get("/byId/:id", async (req, res) => {
+const getThreadById = async (req, res) => {
   const id = req.params.id;
   const thread = await Threads.findByPk(id);
   res.json(thread);
-});
+};
 
-router.post("/", verifyToken, async (req, res) => {
-  //important that we receive data from an input or form as json (object)
+const createThread = async (req, res) => {
   const thread = req.body;
-  //sequelize function which creates entry in database
   await Threads.create(thread);
   res.json(thread);
-});
+};
+
+const deleteThread = async (req, res) => {
+  const id = req.params.threadId;
+  
+  await Posts.destroy({ where: { ThreadId: id } });
+  await Threads.destroy({ where: { id: id } });
+  
+  res.json({ message: "Thread and associated posts deleted successfully" });
+};
+
+const archiveThread = async (req, res) => {
+  const id = req.params.threadId;
+  const thread = await Threads.findByPk(id);
+  
+  if (!thread) {
+    return res.status(404).send(`Thread not found at: /${id}`);
+  }
+
+  await Threads.update({ closed: true, archived: true }, { where: { id: id } });
+
+  const updatedThread = await Threads.findByPk(id);
+  res.json(updatedThread);
+};
+
+const closeThread = async (req, res) => {
+  const id = req.params.threadId;
+  const thread = await Threads.findByPk(id);
+  
+  if (!thread) {
+    return res.status(404).send(`Thread not found at: /${id}`);
+  }
+
+  await Threads.update({ closed: true }, { where: { id: id } });
+
+  const updatedThread = await Threads.findByPk(id);
+  res.json(updatedThread);
+};
+
+router.get("/", getAllThreads);
+router.get("/byId/:id", getThreadById);
+router.post("/", verifyToken, createThread);
+router.delete("/threads/:threadId", verifyToken, modOnly, deleteThread);
+router.put("/threads/:threadId/archive", verifyToken, modOnly, archiveThread);
+router.put("/threads/:threadId/close", verifyToken, modOnly, closeThread);
+
+module.exports = router;
+
 
 
 module.exports = router;
