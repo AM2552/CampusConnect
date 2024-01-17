@@ -4,7 +4,7 @@ const db = require("./models");
 const cors = require("cors");
 const getRouter = require("./routes/threads");
 const postsRouter = require("./routes/posts");
-const users = require("./routes/users");
+const users = require("./routes/Users");
 
 app.use(express.json());
 app.use(cors());
