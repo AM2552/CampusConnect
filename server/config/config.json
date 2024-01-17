@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "!GuHcC$MJmOvTn95h^vB",
+    "password": "admin",
     "database": "campusconnect",
     "host": "localhost",
     "dialect": "mysql"

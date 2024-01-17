@@ -27,7 +27,7 @@ function Thread() {
       setPostObjects(response.data);
     });
   }, [id]);
-
+ 
   const addPost = () => {
     const token = localStorage.getItem("accessToken");
     if (newPost) {
