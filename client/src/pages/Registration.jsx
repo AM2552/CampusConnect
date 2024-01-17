@@ -19,6 +19,21 @@ const RegistrationSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
+// Function to check if a user is already registered
+const checkUserRegistration = async (username, email) => {
+  try {
+    const response = await axios.post("http://localhost:5001/users/check-registration", {
+      username,
+      email,
+    });
+    return response.data.isRegistered; // Assuming the API returns whether the user is registered or not
+  } catch (error) {
+    console.error("Error checking user registration:", error);
+    return false; // Default to false in case of an error
+  }
+};
+
+
 function Registration() {
     let navigate = useNavigate();
     let auth = useAuth();

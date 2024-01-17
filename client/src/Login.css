@@ -14,6 +14,43 @@ body {
       "footer footer footer";
 }
 
+.aside1  {
+    grid-area: aside1;
+    outline: 1px solid rgb(255, 255, 255);
+  }
+  
+  .header {
+    grid-area: header;
+    outline: 1px solid rgb(255, 255, 255);
+  
+  
+  }
+  
+  .aside2 {
+    grid-area: aside2;
+    outline: 1px solid rgb(255, 255, 255);
+  }
+  
+  .aside3 {
+    grid-area: aside3;
+    outline: 1px solid rgb(255, 255, 255);
+  }
+  
+  main {
+    grid-area: main;
+    outline: 1px solid rgb(255, 255, 255);
+  }
+  
+  footer {
+    grid-area: footer;
+    outline: 1px solid rgb(255, 255, 255);
+  }
+  
+  #root {
+    background: ('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
+    background-attachment: fixed;
+  }
+
 .lgnBtncontainer {
     display: flex;
     justify-content: center;

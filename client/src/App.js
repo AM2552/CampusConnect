@@ -12,6 +12,8 @@ import { useAuth } from "./helpers/AuthProvider";
 
 
 
+
+// TODO rename
 function Navigation() {
   const auth = useAuth();
 
@@ -37,30 +39,27 @@ function Navigation() {
   );
 }
 
-function Koala() {
+// change to button
+function NavigationCreateThread() {
   const auth = useAuth();
 
-  const Koala1 = () => {
+  const navCreaThr = () => {
     if (auth.authState) {
       // User is logged in, display logout button
       return (
-      <div>
+      <>
         <Link id="createButton" to="/createthread">Create Thread</Link>
-      </div>
+      </>
       )
     } else { 
     }
   };
   return (
     <>
-      {Koala1()}
+      {navCreaThr()}
     </>
   );
 }
-
-
-
-
 
 
 function App() {
@@ -82,13 +81,10 @@ const auth = useAuth();
             <Route path="/logout" element={<Logout />} />
           </Routes>
           </main>
-          
           <aside className="aside2"> 
-            <Koala/>
+            <NavigationCreateThread/>
           </aside>
-
-          
-          <a class="twitter-timeline" href="https://twitter.com/XDevelopers?ref_src=twsrc%5Etfw">Tweets by XDevelopers</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline"  href="https://twitter.com/FHCampusWien?ref_src=twsrc%5Etfw">Tweets by FHCampusWien</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <footer className="footer"></footer>
           </AuthProvider>
       </Router>
