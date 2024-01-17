@@ -14,7 +14,7 @@ app.use("/users", users)
 
 //goes over every table in models folder, checks if they
 //exist in the database and if not, create it
-db.sequelize.sync().then(() => {
+db.sequelize.sync({alter:true}).then(() => {
   //creates a server
   app.listen(5001, () => {
     console.log("listening on port 5001");
