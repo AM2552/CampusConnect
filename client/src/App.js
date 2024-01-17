@@ -69,7 +69,8 @@ const auth = useAuth();
           <AuthProvider>
           <aside className="aside1"></aside>
           <header className="header">
-            <Navigation />
+          <Link to="/" className="homeCSS">Home Page</Link>
+          <Link to="/logout" className="logoutCSS">Logout</Link>
           </header>
           <main className="main">
           <Routes>

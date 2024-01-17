@@ -173,10 +173,10 @@ function Thread() {
 
 
   return (
-    <div className="threadPage">
-      <div className="left">
+    <div className="threadPageBody">
+      <div className="threadPageLeft">
         <div className="threadObject">
-          {['title', 'threadText', 'username'].map(prop => <div className={`threadObject${prop}`}>{threadObject[prop]}</div>)}
+          {['title', 'threadText', 'username'].map(prop => <div className={`threadObject${prop}`}>{threadObject[prop]}</div>)} 
           {threadObject.closed && <div className="threadStatus">This thread is closed.</div>}
           {threadObject.archived && <div className="threadStatus">This thread is archived.</div>}
           {renderButton(auth.modState, deleteThread, 'Delete Thread')}
@@ -184,10 +184,10 @@ function Thread() {
           {renderButton(auth.modState && !threadObject.archived, archiveThread, 'Archive Thread')}
         </div>
       </div>
-      <div className="right">
+      <div className="threadPageRight">
         {!threadObject.closed && !threadObject.archived && (
           <div className="addPostField">
-            <input type="text" placeholder="Post your comment..." value={newPost} onChange={e => setNewPost(e.target.value)} />
+            <input type="text" placeholder="Post your comment..." value={newPost} onChange={e => setNewPost(e.target.value)} className="commentInput" />
             <button onClick={addPost}>Add Post</button>
           </div>
         )}
