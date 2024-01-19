@@ -15,7 +15,6 @@ function Login() {
 
   };
   return (
-    
     <div className="mainLoginDiv" >
       <label className="loginLabelDiv">Login</label>
       <div className="loginContainer1">
@@ -47,7 +46,6 @@ function Login() {
         </Link>
       </div>
     </div>
-    
   );
 }
 

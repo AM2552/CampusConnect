@@ -228,7 +228,7 @@ function Thread() {
         {!threadObject.closed && !threadObject.archived && (
           <div className="addPostField">
             <input type="text" placeholder="Post your comment..." value={newPost} onChange={e => setNewPost(e.target.value)} className="commentInput" />
-            <button onClick={addPost}>Add Post</button>
+            <button className="addPostButton" onClick={addPost}>Add Post</button>
           </div>
         )}
         <div className="listOfPosts"></div>
