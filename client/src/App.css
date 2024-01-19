@@ -51,15 +51,27 @@ footer {
   background-attachment: fixed;
 }
 
-#createButton {
+.createButtonDiv {
   margin-top: 35px;
   display: flex;
-  justify-content: center;
-  text-decoration: none;
-  color: aliceblue;
+  justify-content: center; 
+}
+
+#createButton {
+  font-size: 26px;
   font-weight: bold;
+  text-decoration: none;
+  border: transparent; 
+  color: #fcd581;
+  background-color: rgba(52, 152, 219, 0.5) ; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
+  cursor: pointer;
+}
+
+#createButton:hover {
+  color: #ffffff;
 }
 
 #createButton:hover {
@@ -453,4 +465,6 @@ footer {
   color: rgba(255, 47, 47, 0.978);
   margin-bottom: 5px;
 }
+
+
 
