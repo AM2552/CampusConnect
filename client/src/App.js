@@ -12,36 +12,29 @@ import AuthProvider from './helpers/AuthProvider';
 import { useAuth } from "./helpers/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
 
-
-
-
-// TODO rename
 function Navigation() {
   const auth = useAuth();
 
-  const renderAuthButton = () => {
+  const renderAuthButtons = () => {
     if (auth.authState) {
       // User is logged in, display logout button
       return (
-      <div>
-      <Link to="/" className="homeCSS">Home Page</Link>
-      <Link to="/logout" className="logoutCSS">Logout</Link>
-      </div>
-      )
-    } else { 
-      // User is not logged in, display login button
-      return <Navigate to="/login"/>
+        <div>
+          <Link to="/" className="homeCSS">Home Page</Link>
+          <Link to="/logout" className="logoutCSS">Logout</Link>
+        </div>
+      );
     }
   };
 
   return (
     <>
-      {renderAuthButton()}
+      {renderAuthButtons()}
     </>
   );
 }
 
-// change to button
+
 function NavigationCreateThread() {
   const auth = useAuth();
 
