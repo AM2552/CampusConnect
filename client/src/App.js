@@ -65,15 +65,14 @@ function NavigationCreateThread() {
 
 
 function App() {
-const auth = useAuth();
+  const auth = useAuth();
   return (
       <Router>
           <AuthProvider>
           <aside className="aside1"></aside>
           <header className="header">
-          <Link to="/" className="homeCSS">Home Page</Link>
-      <Link to="/logout" className="logoutCSS">Logout</Link>
-          </header>
+            <Navigation/>
+        </header>
           <main className="main">
           <Routes>
             <Route path="/login" element={<Login />} />
