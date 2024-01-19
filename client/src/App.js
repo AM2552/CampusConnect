@@ -10,6 +10,7 @@ import Logout from "./pages/Logout";
 import Registration from "./pages/Registration";
 import AuthProvider from './helpers/AuthProvider';
 import { useAuth } from "./helpers/AuthProvider";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 
@@ -75,12 +76,24 @@ const auth = useAuth();
           </header>
           <main className="main">
           <Routes>
-          <Route path="/" exact element={<Home />} />
-            <Route path="/thread/:id" exact element={<Thread />} />
-            <Route path="/createthread" exact element={<CreateThread/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/" element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } />
+          <Route path="/thread/:id" element={
+            <ProtectedRoute>
+              <Thread />
+            </ProtectedRoute>
+          } />
+          <Route path="/createthread" element={
+            <ProtectedRoute>
+              <CreateThread />
+            </ProtectedRoute>
+          } />
           </Routes>
           </main>
           <aside className="aside2"> 
