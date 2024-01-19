@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../helpers/AuthProvider";
 
 const RegistrationSchema = Yup.object().shape({
@@ -89,6 +89,11 @@ function Registration() {
             className="regPageBtn">
               Register
             </button>
+            </div>
+            <div className="registerButtonContainer">
+            <Link to="/login">
+              <button className="registerBtn">Login instead</button>
+            </Link>
             </div>
           </Form>
         )}

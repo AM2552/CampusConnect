@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import "./Login.css";
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateThread from "./pages/createThread";
@@ -71,7 +72,7 @@ const auth = useAuth();
           <aside className="aside1"></aside>
           <header className="header">
           <Link to="/" className="homeCSS">Home Page</Link>
-          <Link to="/logout" className="logoutCSS">Logout</Link>
+      <Link to="/logout" className="logoutCSS">Logout</Link>
           </header>
           <main className="main">
           <Routes>
