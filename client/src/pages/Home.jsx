@@ -69,21 +69,35 @@ function Home() {
   };
 
   return (
+
+    //ADD CLASSNAME
     <div>
-      <button onClick={sortByDate}>{sortDateAscending ? "Newest First" : "Oldest First"}</button>
-      <button onClick={sortByTitle}>{sortTitleAscending ? "Z-A" : "A-Z"}</button>
+      <div className="filterDiv">
+        <div className="filterDiv1">
+      <button className="dateFilter" onClick={sortByDate}>{sortDateAscending ? "Newest First" : "Oldest First"}</button>
+      </div>
+      <div className="filterDiv2">
+      <button className="dateFilter" onClick={sortByTitle}>{sortTitleAscending ? "Z-A" : "A-Z"}</button>
+      </div>
+      <div className="searchByUser filterDiv2">
       <input 
+        className="searchBy"
         type="text" 
         placeholder="Search by user..." 
         value={searchUser} 
         onChange={handleSearchChange}
       />
+      </div>
+      <div className="searchByKey filterDiv2">
       <input 
+          className="searchBy"
           type="text" 
           placeholder="Search by keyword..." 
           value={searchKeyword} 
           onChange={handleKeywordChange}
         />
+        </div>
+        </div>
       {filteredThreads.map((value, key) => {
         return (
           <div

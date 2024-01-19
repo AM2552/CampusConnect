@@ -42,9 +42,9 @@ function NavigationCreateThread() {
     if (auth.authState) {
       // User is logged in, display logout button
       return (
-      <>
-        <Link id="createButton" to="/createthread">Create Thread</Link>
-      </>
+      <div className="createButtonDiv"> 
+        <Link className="createButton" to="/createthread">Create Thread</Link>
+      </div>
       )
     } else { 
     }
