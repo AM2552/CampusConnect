@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import "./Login.css";
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateThread from "./pages/createThread";
