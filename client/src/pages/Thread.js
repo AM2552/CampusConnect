@@ -14,9 +14,13 @@ function Thread() {
   const [threadObject, setThreadObject] = useState({});
   const [postObjects, setPostObjects] = useState([]);
   const [newPost, setNewPost] = useState("");
-  const [updatedPost, setUpdatedPost] = useState(""); // Add this line
+  const [updatedPost, setUpdatedPost] = useState("");
+  const [editingPostId, setEditingPostId] = useState(null);
 
-  const [editingPostId, setEditingPostId] = useState(null); // Add this line
+  const [searchUser, setSearchUser] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
     axios.get(`${serverUrl}/byId/${id}`).then((response) => {
@@ -24,9 +28,33 @@ function Thread() {
     });
 
     axios.get(`${serverUrl}/posts/${id}`).then((response) => {
+      setAllPosts(response.data); 
       setPostObjects(response.data);
     });
   }, [id]);
+
+  useEffect(() => {
+    let filtered = allPosts;
+    if (searchUser.trim() !== '') {
+      filtered = filtered.filter(post => 
+        post.username.toLowerCase().includes(searchUser.toLowerCase())
+      );
+    }
+    if (searchKeyword.trim() !== '') {
+      filtered = filtered.filter(post => 
+        post.postText.toLowerCase().includes(searchKeyword.toLowerCase())
+      );
+    }
+    setPostObjects(filtered);
+  }, [searchUser, searchKeyword, allPosts]);
+
+  const handleUserSearchChange = (e) => {
+    setSearchUser(e.target.value);
+  };
+
+  const handleKeywordChange = (e) => {
+    setSearchKeyword(e.target.value);
+  };
  
   const addPost = () => {
     const token = localStorage.getItem("accessToken");
@@ -185,6 +213,18 @@ function Thread() {
         </div>
       </div>
       <div className="threadPageRight">
+        <input 
+          type="text" 
+          placeholder="Search by user..." 
+          value={searchUser} 
+          onChange={handleUserSearchChange}
+        />
+        <input 
+          type="text" 
+          placeholder="Search by keyword..." 
+          value={searchKeyword} 
+          onChange={handleKeywordChange}
+        />
         {!threadObject.closed && !threadObject.archived && (
           <div className="addPostField">
             <input type="text" placeholder="Post your comment..." value={newPost} onChange={e => setNewPost(e.target.value)} className="commentInput" />

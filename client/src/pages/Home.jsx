@@ -13,8 +13,12 @@ function Home() {
 
   useEffect(() => {
     axios.get("http://localhost:5001/").then((response) => {
-      setListOfThreads(response.data);
-      setFilteredThreads(response.data);
+      // Sort threads by date descending (newest first) before setting them
+      const sortedByDate = response.data.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      setListOfThreads(sortedByDate);
+      setFilteredThreads(sortedByDate);
     });
   }, []);
 
