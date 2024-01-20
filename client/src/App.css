@@ -6,7 +6,7 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: 15% auto 25%;
-  grid-template-rows: 15% 10% auto 10%;
+  grid-template-rows: 15% auto auto 10%;
   grid-template-areas:
     "header1 header2 header3"
     "aside1 main aside2"
@@ -57,6 +57,7 @@ footer {
 }
 
 .createButtonDiv {
+  padding-bottom: 10px;
   margin-top: 20px;
   display: flex;
   justify-content: center; 
@@ -87,6 +88,124 @@ footer {
 #createButton:hover {
   background-color: rgb(165, 102, 19);;
 }
+
+/*Login page*/
+.lgnBtncontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db;
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.registerBtn:hover {
+  background-color: #f07272; 
+  color: #ffffff;
+}
+
+.loginContainer1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-top: 17px;
+}
+
+.loginContainer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.lgCon1 {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.lgCon1:focus {
+  /**/
+}
+
+
+
+.lgCon2 {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.loginBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db;
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  background-color: #56be2a; 
+  color: #ffffff;
+}
+
+.registerButtonContainer {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.userLabel {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-left: 10px;
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.mainLoginDiv {
+  margin-top: 20px;
+}
+
+.loginLabelDiv{
+  font-size: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+
+
 
 
 .thread {
@@ -569,6 +688,94 @@ footer {
   font-size: 60px;
   color: white;
   display: flex;
-      align-items: center;
-      justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
+
+
+/*ban/uban user div*/
+
+.banUnbanContainer {
+  padding-top: 10px;
+  padding-left: 20px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.banUserInput {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.unbanUserInput {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.banUserButtonDiv {
+  padding-left: 5px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.banUserContainer {
+  padding-bottom: 5px;
+}
+
+.banUserButton {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+
+.banUserButton:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+/*un-ban*/
+
+.unbanUserButtonDiv {
+  padding-left: 5px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.unbanUserButton {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.unbanUserButton:hover {
+  background-color: #49ef28; 
+  border: 2px solid #49ef28;
+  color: #ffffff;
+}
+

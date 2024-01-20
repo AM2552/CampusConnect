@@ -84,8 +84,9 @@ function BanUser() {
                       value={searchNonBannedUser}
                       onChange={(e) => setSearchNonBannedUser(e.target.value)}
                   />
+                  <div className="banUserButtonDiv">
                   <button className="banUserButton" onClick={handleBanUser}>Ban User</button>
-                  
+                  </div>
                   <div className="dropdownContainer">
                     {nonBannedUserList.map(user => (
                         <div key={user.id} className="dropdownItem" onClick={() => setSearchNonBannedUser(user.username)}>
@@ -103,8 +104,9 @@ function BanUser() {
                       value={searchBannedUser}
                       onChange={(e) => setSearchBannedUser(e.target.value)}
                   />
+                  <div className="unbanUserButtonDiv">
                   <button className="unbanUserButton" onClick={handleUnbanUser}>Unban User</button>
-    
+                  </div>
                   <div className="dropdownContainer">
                     {bannedUserList.map(user => (
                         <div key={user.id} className="dropdownItem" onClick={() => setSearchBannedUser(user.username)}>

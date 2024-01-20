@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import "./Login.css";
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateThread from "./pages/createThread";
@@ -115,7 +114,6 @@ function App() {
         </header>
         <header className="header3">
           <LogoutNav/>
-          <BanUser/>
         </header>
           <main className="main">
           <Routes>
@@ -141,6 +139,7 @@ function App() {
           </main>
           <aside className="aside2"> 
             <NavigationCreateThread/>
+            <BanUser/>
           </aside>
           <a class="twitter-timeline"  href="https://twitter.com/FHCampusWien?ref_src=twsrc%5Etfw">Tweets by FHCampusWien</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <footer className="footer"></footer>

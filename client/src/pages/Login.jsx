@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useAuth } from "../helpers/AuthProvider";
-import "../Login.css";
 import { Routes, Router, Link, useNavigation } from "react-router-dom";
 import Registration from "./Registration";
 
