@@ -18,7 +18,7 @@ function BanUser() {
                     query: searchQuery,
                     bannedStatus: isBanned.toString(),
                 },
-                headers: { Authorization: `Bearer ${auth.token}` },
+                headers: { 'auth-token': `Bearer ${auth.token}` },
             });
             if (isBanned) {
                 setBannedUserList(response.data);
@@ -51,7 +51,7 @@ function BanUser() {
         try {
             await axios.post(`${serverUrl}/users/ban`, 
                 { username: searchNonBannedUser },
-                { headers: { Authorization: `Bearer ${auth.token}` } }
+                { headers: { 'auth-token': `Bearer ${auth.token}` } }
             );
             alert("User banned successfully");
         } catch (error) {
@@ -63,7 +63,7 @@ function BanUser() {
         try {
             await axios.post(`${serverUrl}/users/unban`, 
                 { username: searchBannedUser },
-                { headers: { Authorization: `Bearer ${auth.token}` } }
+                { headers: { 'auth-token': `Bearer ${auth.token}` } }
             );
             alert("User unbanned successfully");
         } catch (error) {

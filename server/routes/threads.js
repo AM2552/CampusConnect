@@ -66,7 +66,3 @@ router.put("/threads/:threadId/archive", verifyToken, modOnly, archiveThread);
 router.put("/threads/:threadId/close", verifyToken, modOnly, closeThread);
 
 module.exports = router;
-
-
-
-module.exports = router;
