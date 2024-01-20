@@ -16,42 +16,39 @@ body {
 
 .aside1  {
   grid-area: aside1;
-  outline: 1px solid #ffffff50;
 }
 
 .header1 {
   grid-area: header1;
-  outline: 1px solid #ffffff50;
+  border-bottom: 1px solid #ffffff50;
 }
 
 .header2 {
   grid-area: header2;
-  outline: 1px solid #ffffff50;
+  border-bottom: 1px solid #ffffff50;
 }
 
 .header3 {
   grid-area: header3;
-  outline: 1px solid #ffffff50;
+  border-bottom: 1px solid #ffffff50;
 }
 
 .aside2 {
   grid-area: aside2;
-  outline: 1px solid #ffffff50;
+  border-left: 1px solid #ffffff50;
 }
 
 .aside3 {
   grid-area: aside3;
-  outline: 1px solid #ffffff50;
 }
 
 main {
   grid-area: main;
-  outline: 1px solid #ffffff50;
+  border-left: 1px solid #ffffff50;
 }
 
 footer {
   grid-area: footer;
-  outline: 1px solid #ffffff50;
 }
 
 #root {
@@ -159,7 +156,7 @@ footer {
 }
 
 /*thread-Site by ID*/
-.threadObjectTitle {
+.threadObjecttitle {
   font-size: 50px;
 }
 
@@ -177,7 +174,7 @@ footer {
   font-weight: bold;
 }
 
-.threadPageLeft .threadObjectTitle {
+.threadPageLeft .threadObjecttitle {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: grid;
   place-content: center;
@@ -185,7 +182,7 @@ footer {
   padding-top: 15px;
   
 }
-.threadPageLeft .threadObjectText {
+.threadPageLeft .threadObjectthreadText {
   color: white;
   display: grid;
   place-content: center;
@@ -193,7 +190,7 @@ footer {
   padding-top: 30px;
 }
 
-.threadPageLeft .threadObjectUsername {
+.threadPageLeft .threadObjectusername {
   color: aliceblue;
   padding-left: 4px;
   padding-top: 4px;
@@ -351,7 +348,7 @@ footer {
   border: 2px solid #3498db; 
   color: #3498db;
   background-color: transparent; 
-  border-radius: 5px; 
+  border-radius: 10px; 
   transition: background-color 0.3s, color 0.3s;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   cursor: pointer;
