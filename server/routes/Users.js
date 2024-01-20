@@ -62,8 +62,42 @@ const banUser = async (req, res) => {
   res.status(200).json({ msg: 'User has been banned successfully.' });
 };
 
+const unbanUser = async (req, res) => {
+  const { username } = req.body;
+  const user = await User.findOne({ where: { username } });
 
-router.post('/ban', verifyToken, modOnly,banUser);
+  if (!user) {
+    return res.status(400).json({ msg: 'User not found.' });
+  }
+
+  user.banned = false;
+  await user.save();
+
+  res.status(200).json({ msg: 'User has been unbanned successfully.' });
+};
+
+const searchUsers = async (req, res) => {
+  const { query, bannedStatus } = req.query;
+  try {
+    const users = await User.findAll({
+      where: {
+        username: {
+          [Op.startsWith]: query
+        },
+        banned: bannedStatus === 'true'
+      },
+      attributes: ['username', 'banned'],
+    });
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ msg: 'Error searching for users.' });
+  }
+};
+
+
+router.post('/ban', verifyToken, modOnly, banUser);
+router.post('/unban', verifyToken, modOnly, unbanUser);
+router.get('/search', verifyToken, modOnly, searchUsers);
 router.post('/signup', createUser);
 router.post('/login', loginUser);
 

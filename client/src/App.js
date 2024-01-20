@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import "./Login.css";
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import Registration from "./pages/Registration";
 import AuthProvider from './helpers/AuthProvider';
 import { useAuth } from "./helpers/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
+import BanUser from "./BanUser";
 
 function HomeNav() {
   const auth = useAuth();
@@ -82,20 +83,20 @@ function NavigationCreateThread() {
   );
 }
 
-
 function App() {
-  const auth = useAuth();
   return (
       <Router>
-          <AuthProvider>
+        <AuthProvider>
           <aside className="aside1"></aside>
           <header className="header1">
             <HomeNav/>
-        </header>
-        <header className="header2"></header>
+          </header>
+          <header className="header2">
+            <BanUser/>
+          </header>
         <header className="header3">
           <LogoutNav/>
-          </header>
+        </header>
           <main className="main">
           <Routes>
             <Route path="/login" element={<Login />} />

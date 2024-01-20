@@ -30,8 +30,11 @@ const AuthProvider = ({ children }) => {
         alert("Logged in as " + res.data.username);
         navigate("/");
       })
-      .catch(() => {
-        alert("Wrong Username or Password");
+      .catch((error) => {
+        const message = error.response && error.response.data.msg
+          ? error.response.data.msg
+          : "Wrong Username or Password";
+        alert(message);
       });
   };
 

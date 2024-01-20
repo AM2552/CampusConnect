@@ -31,7 +31,7 @@ function Login() {
         <input
           className="lgCon2"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           onChange={(event) => {
             setPassword(event.target.value);
           }}
