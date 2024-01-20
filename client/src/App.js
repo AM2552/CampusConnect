@@ -21,8 +21,12 @@ function HomeNav() {
       // User is logged in, display logout button
       return (
         <div>
-          <div>
-            <Link to="/" className="homeCSS">Home Page</Link>
+          <div className="logoutBtnDivHome">
+            <Link to="/" >
+              <button className="homeCSS">
+              Home Page
+              </button>
+              </Link>
             </div>
         </div>
       );
@@ -39,14 +43,25 @@ function HomeNav() {
 
 function LogoutNav() {
   const auth = useAuth();
+  const username = Login.username;
 
   const renderLogoutButton = () => {
     if (auth.authState) {
       // User is logged in, display logout button
       return (
         <div>
-          <div>
-            <Link to="/logout" className="logoutCSS">Logout</Link>
+          <div className="logoutBtnDivHome">
+          <button className="userNameHome">
+            Username
+          </button> 
+          <div className="logoutCSSDiv">
+            <Link to="/logout">
+              <button className="logoutCSS">
+              Logout
+              </button>
+            </Link>
+            </div>  
+
           </div>
         </div>
       );
@@ -90,12 +105,17 @@ function App() {
           <aside className="aside1"></aside>
           <header className="header1">
             <HomeNav/>
-          </header>
-          <header className="header2">
-            <BanUser/>
-          </header>
+        </header>
+        <header className="header2">
+        <div>
+            <h1 className="campusHeadline">
+              CampusConnect
+            </h1>
+            </div>
+        </header>
         <header className="header3">
           <LogoutNav/>
+          <BanUser/>
         </header>
           <main className="main">
           <Routes>

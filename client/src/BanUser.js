@@ -73,41 +73,50 @@ function BanUser() {
 
 
     const renderBanButtons = () => {
-      if (auth.authState && auth.modState) {
-        
-        return (
-            <div>
-            
-            <input
-                type="text"
-                placeholder="Search non-banned users"
-                value={searchNonBannedUser}
-                onChange={(e) => setSearchNonBannedUser(e.target.value)}
-            />
-            <button onClick={handleBanUser}>Ban User</button>
-                {nonBannedUserList.map(user => (
-                    <div key={user.id} onClick={() => setSearchNonBannedUser(user.username)}>
-                        {user.username}
-                    </div>
-                ))}
-
-            
-            <input
-                type="text"
-                placeholder="Search banned users"
-                value={searchBannedUser}
-                onChange={(e) => setSearchBannedUser(e.target.value)}
-            />
-            <button onClick={handleUnbanUser}>Unban User</button>
-                {bannedUserList.map(user => (
-                    <div key={user.id} onClick={() => setSearchBannedUser(user.username)}>
-                        {user.username}
-                    </div>
-                ))}
-        </div>
-        );
-      }
-    };
+        if (auth.authState && auth.modState) {
+          return (
+              <div className="banUnbanContainer">
+                <div className="banUserContainer">
+                  <input
+                      type="text"
+                      className="banUserInput"
+                      placeholder="Search non-banned users"
+                      value={searchNonBannedUser}
+                      onChange={(e) => setSearchNonBannedUser(e.target.value)}
+                  />
+                  <button className="banUserButton" onClick={handleBanUser}>Ban User</button>
+                  
+                  <div className="dropdownContainer">
+                    {nonBannedUserList.map(user => (
+                        <div key={user.id} className="dropdownItem" onClick={() => setSearchNonBannedUser(user.username)}>
+                            {user.username}
+                        </div>
+                    ))}
+                  </div>
+                </div>
+  
+                <div className="unbanUserContainer">
+                  <input
+                      type="text"
+                      className="unbanUserInput"
+                      placeholder="Search banned users"
+                      value={searchBannedUser}
+                      onChange={(e) => setSearchBannedUser(e.target.value)}
+                  />
+                  <button className="unbanUserButton" onClick={handleUnbanUser}>Unban User</button>
+    
+                  <div className="dropdownContainer">
+                    {bannedUserList.map(user => (
+                        <div key={user.id} className="dropdownItem" onClick={() => setSearchBannedUser(user.username)}>
+                            {user.username}
+                        </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+          );
+        }
+      };
   
     return (
       <>
