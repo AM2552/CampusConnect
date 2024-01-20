@@ -107,7 +107,13 @@ function App() {
           <header className="header1">
             <HomeNav/>
         </header>
-        <header className="header2"></header>
+        <header className="header2">
+        <div>
+            <h1 className="campusHeadline">
+              CampusConnect
+            </h1>
+            </div>
+        </header>
         <header className="header3">
           <LogoutNav/>
           </header>

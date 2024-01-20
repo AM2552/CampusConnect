@@ -390,7 +390,7 @@ footer {
 }
 
 .logoutBtnDivHome {
-  padding-top: 30px;
+  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -567,3 +567,11 @@ footer {
 }
 
 
+.campusHeadline {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 60px;
+  color: white;
+  display: flex;
+      align-items: center;
+      justify-content: center;
+}
