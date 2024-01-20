@@ -15,7 +15,38 @@ body {
 }
 
 .aside1  {
+  padding: 10px;
   grid-area: aside1;
+}
+
+.aside1 input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.fileHeader {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadButton {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.uploadButton:hover {
+  background-color: #3498db; 
+  color: #ffffff;
 }
 
 .header1 {

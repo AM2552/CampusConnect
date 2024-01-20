@@ -11,6 +11,7 @@ import AuthProvider from './helpers/AuthProvider';
 import { useAuth, user } from "./helpers/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
 import BanUser from "./BanUser";
+import FileUpload from "./FileUpload";
 
 function HomeNav() {
   const auth = useAuth();
@@ -137,6 +138,9 @@ function App() {
           } />
           </Routes>
           </main>
+          <aside className="aside1">
+          <FileUpload />
+          </aside>
           <aside className="aside2"> 
             <NavigationCreateThread/>
             <BanUser/>
