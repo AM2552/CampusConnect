@@ -4,16 +4,33 @@ import "../Login.css";
 import { Routes, Router, Link, useNavigation } from "react-router-dom";
 import Registration from "./Registration";
 
+
+
+
+
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const { setAuthState } = useContext(AuthContext);
   const auth = useAuth();
+
+
+  const extractUsername = () => {
+    return username;
+  };
+
+
+
   const login = () => {
     const data = { usernameOrEmail: username, password: password };
     auth.loginAction(data);
 
   };
+
+  
+
+  
   return (
     <div className="mainLoginDiv" >
       <label className="loginLabelDiv">Login</label>

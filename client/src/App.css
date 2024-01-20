@@ -60,7 +60,7 @@ footer {
 }
 
 .createButtonDiv {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   justify-content: center; 
 }
@@ -343,7 +343,6 @@ footer {
 }
 
 .homeCSS {
-  display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -355,6 +354,7 @@ footer {
   border-radius: 5px; 
   transition: background-color 0.3s, color 0.3s;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
 }
 
 .homeCSS:hover {
@@ -364,7 +364,39 @@ footer {
 
 
 .logoutCSS {
-  display:inline-block;
+  padding: 10px 20px;
+  
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.logoutCSS:hover {
+  background-color: #eb4614;
+  border: 2px solid #ff9f81;  
+  color: #ffffff;
+}
+
+.logoutCSSDiv {
+  padding-left: 7px;
+}
+
+.logoutBtnDivHome {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userNameHome {
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -376,13 +408,17 @@ footer {
   border-radius: 10px; 
   transition: background-color 0.3s, color 0.3s;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
 }
 
-.logoutCSS:hover {
-  background-color: #eb4614;
-  border: 2px solid #ff9f81;  
-  color: #ffffff;
+.userNameHome:hover {
+  background-color: #c7eb14;
+  border: 2px solid #c7eb14;  
+  color: #000000;
 }
+
+
+
 
 
 /*login page*/

@@ -20,8 +20,12 @@ function HomeNav() {
       // User is logged in, display logout button
       return (
         <div>
-          <div>
-            <Link to="/" className="homeCSS">Home Page</Link>
+          <div className="logoutBtnDivHome">
+            <Link to="/" >
+              <button className="homeCSS">
+              Home Page
+              </button>
+              </Link>
             </div>
         </div>
       );
@@ -38,14 +42,25 @@ function HomeNav() {
 
 function LogoutNav() {
   const auth = useAuth();
+  const username = Login.username;
 
   const renderLogoutButton = () => {
     if (auth.authState) {
       // User is logged in, display logout button
       return (
         <div>
-          <div>
-            <Link to="/logout" className="logoutCSS">Logout</Link>
+          <div className="logoutBtnDivHome">
+          <button className="userNameHome">
+            Username
+          </button> 
+          <div className="logoutCSSDiv">
+            <Link to="/logout">
+              <button className="logoutCSS">
+              Logout
+              </button>
+            </Link>
+            </div>  
+
           </div>
         </div>
       );
