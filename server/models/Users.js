@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     banned: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false, // Assuming users are not banned by default
+      defaultValue: false,
     }
 
   });

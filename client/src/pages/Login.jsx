@@ -1,12 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../helpers/AuthProvider";
-import { Routes, Router, Link, useNavigation } from "react-router-dom";
-import Registration from "./Registration";
-
-
-
-
-
+import { Link } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -14,21 +8,11 @@ function Login() {
   // const { setAuthState } = useContext(AuthContext);
   const auth = useAuth();
 
-
-  const extractUsername = () => {
-    return username;
-  };
-
-
-
   const login = () => {
     const data = { usernameOrEmail: username, password: password };
     auth.loginAction(data);
 
   };
-
-  
-
   
   return (
     <div className="mainLoginDiv" >

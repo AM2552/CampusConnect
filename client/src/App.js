@@ -102,8 +102,7 @@ function App() {
   return (
       <Router>
         <AuthProvider>
-          <aside className="aside1"></aside>
-          <header className="header1">
+        <header className="header1">
             <HomeNav/>
         </header>
         <header className="header2">
