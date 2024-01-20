@@ -95,9 +95,9 @@ const searchUsers = async (req, res) => {
 };
 
 
-router.post('/ban', verifyToken, modOnly, banUser);
-router.post('/unban', verifyToken, modOnly, unbanUser);
-router.get('/search', verifyToken, modOnly, searchUsers);
+router.post('/ban', banUser);
+router.post('/unban', unbanUser);
+router.get('/search', searchUsers);
 router.post('/signup', createUser);
 router.post('/login', loginUser);
 

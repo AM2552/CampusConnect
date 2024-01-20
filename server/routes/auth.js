@@ -6,30 +6,25 @@ const { User, Posts } = require('../models');
 const JWT_SECRET = 'jwt_secret_123';
 
 function verifyToken(req, res, next) {
-  const tokenHeader = req.header('Authorization');
-  if (!tokenHeader) return res.status(401).send('Access Denied: No token provided.');
+    console.log(req.header('auth-token'))
+    const token = req.header('auth-token').split(' ')[1];
+    if (!token) return res.status(401).send('Access Denied, Code 00');
 
-  const token = tokenHeader.split(' ')[1];
-  if (!token) return res.status(401).send('Access Denied: Invalid token format.');
+    try {
+        const verified = jwt.verify(token, JWT_SECRET);
+        req.user = verified;
 
-  try {
-      const verified = jwt.verify(token, JWT_SECRET);
-      req.user = verified;
+        const userid = verified.uid;
+        const user = User.findByPk(userid)
+        if (user.banned == 1){
+          return res.status(401).send('User is banned, please contact an Admin!');
+        }
+        req.userid = userid
 
-      User.findByPk(verified.uid)
-          .then(user => {
-              if (user && user.banned) {
-                  return res.status(401).send('User is banned, please contact an Admin!');
-              }
-              req.userDetails = user; // Store user details in request for downstream use
-              next();
-          })
-          .catch(err => {
-              return res.status(500).send('Error verifying user.');
-          });
-  } catch (err) {
-      return res.status(400).send('Invalid Token');
-  }
+        return next();
+    } catch (err) {
+        return res.status(400).send('Invalid Token');
+    }
 }
 
 // Middleware to check if the post is from the user or if the user is a mod
@@ -78,10 +73,17 @@ async function authorOnly(req, res, next) {
 
 // Middleware to check if the user is a mod
 async function modOnly(req, res, next) {
-  if (!req.userDetails || !req.userDetails.moderator) {
-      return res.status(401).send('Access Denied: Requires moderator privileges.');
+  const token = req.header('auth-token').split(' ')[1];
+  if (!token) return res.status(401).send('Error 401: Access Denied, Code 10');
+  try {
+    const payload = jwt.verify(token, JWT_SECRET);
+    const userid = payload.uid;
+    const user = await User.findByPk(userid);
+    if (!user || !user.moderator) return res.status(401).send('Error 401: Access Denied, Code 30 ' + user.moderator);
+    next();
+  } catch (err) {
+    res.status(401).send('Error 401: Access Denied Code 41: ' + err);
   }
-  next();
 }
 
 module.exports = { authorAndMod, authorOnly, modOnly, verifyToken, };
