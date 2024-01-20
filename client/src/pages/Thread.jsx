@@ -204,7 +204,8 @@ function Thread() {
     <div className="threadPageBody">
       <div className="threadPageLeft">
         <div className="threadObject">
-          {['title', 'threadText', 'username'].map(prop => <div className={`threadObject${prop}`}>{threadObject[prop]}</div>)} 
+          {['title', 'threadText', 'username'].map(prop => 
+          <div className={`threadObject${prop}`}>{threadObject[prop]}</div>)} 
           {threadObject.closed && <div className="threadStatus">This thread is closed.</div>}
           {threadObject.archived && <div className="threadStatus">This thread is archived.</div>}
           {renderButton(auth.modState, deleteThread, 'Delete Thread')}
