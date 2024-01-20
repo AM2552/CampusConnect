@@ -8,7 +8,7 @@ body {
   grid-template-columns: 15% auto 25%;
   grid-template-rows: 15% 10% auto 10%;
   grid-template-areas:
-    "header header header"
+    "header1 header2 header3"
     "aside1 main aside2"
     "aside1 main aside3"
     "footer footer footer";
@@ -19,8 +19,18 @@ body {
   outline: 1px solid #ffffff50;
 }
 
-.header {
-  grid-area: header;
+.header1 {
+  grid-area: header1;
+  outline: 1px solid #ffffff50;
+}
+
+.header2 {
+  grid-area: header2;
+  outline: 1px solid #ffffff50;
+}
+
+.header3 {
+  grid-area: header3;
   outline: 1px solid #ffffff50;
 }
 
@@ -354,7 +364,7 @@ footer {
 
 
 .logoutCSS {
-  display: inline-block;
+  display:inline-block;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -483,10 +493,11 @@ footer {
   padding: 5px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 15px;
   background-color: white;
   color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .dateFilter {

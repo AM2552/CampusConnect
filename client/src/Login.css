@@ -8,17 +8,28 @@ body {
     grid-template-columns: 15% auto 25%;
     grid-template-rows: 15% 10% auto 10%;
     grid-template-areas:
-      "header header header"
-      "aside1 main aside2"
-      "aside1 main aside3"
-      "footer footer footer";
+    "header1 header2 header3"
+    "aside1 main aside2"
+    "aside1 main aside3"
+    "footer footer footer";
 }
 
 .aside1  {
     grid-area: aside1;
   }
   
-  .header {
+  .header1 {
+    grid-area: header1;
+  }
+  
+  .header2 {
+    grid-area: header2;
+  }
+  
+  .header3 {
+    grid-area: header3;
+  }
+    .header {
     grid-area: header;
   
   

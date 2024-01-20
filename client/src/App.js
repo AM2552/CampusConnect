@@ -12,16 +12,17 @@ import AuthProvider from './helpers/AuthProvider';
 import { useAuth } from "./helpers/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
 
-function Navigation() {
+function HomeNav() {
   const auth = useAuth();
 
-  const renderAuthButtons = () => {
+  const renderHomeButton = () => {
     if (auth.authState) {
       // User is logged in, display logout button
       return (
         <div>
-          <Link to="/" className="homeCSS">Home Page</Link>
-          <Link to="/logout" className="logoutCSS">Logout</Link>
+          <div>
+            <Link to="/" className="homeCSS">Home Page</Link>
+            </div>
         </div>
       );
     }
@@ -29,10 +30,35 @@ function Navigation() {
 
   return (
     <>
-      {renderAuthButtons()}
+      {renderHomeButton()}
     </>
   );
 }
+
+
+function LogoutNav() {
+  const auth = useAuth();
+
+  const renderLogoutButton = () => {
+    if (auth.authState) {
+      // User is logged in, display logout button
+      return (
+        <div>
+          <div>
+            <Link to="/logout" className="logoutCSS">Logout</Link>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <>
+      {renderLogoutButton()}
+    </>
+  );
+}
+
 
 
 function NavigationCreateThread() {
@@ -63,9 +89,13 @@ function App() {
       <Router>
           <AuthProvider>
           <aside className="aside1"></aside>
-          <header className="header">
-            <Navigation/>
+          <header className="header1">
+            <HomeNav/>
         </header>
+        <header className="header2"></header>
+        <header className="header3">
+          <LogoutNav/>
+          </header>
           <main className="main">
           <Routes>
             <Route path="/login" element={<Login />} />
