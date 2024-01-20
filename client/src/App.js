@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Registration from "./pages/Registration";
 import AuthProvider from './helpers/AuthProvider';
-import { useAuth } from "./helpers/AuthProvider";
+import { useAuth, user } from "./helpers/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
 import BanUser from "./BanUser";
 
@@ -51,7 +51,7 @@ function LogoutNav() {
         <div>
           <div className="logoutBtnDivHome">
           <button className="userNameHome">
-            Username
+            {auth.user}
           </button> 
           <div className="logoutCSSDiv">
             <Link to="/logout">
