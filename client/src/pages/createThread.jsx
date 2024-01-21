@@ -63,7 +63,14 @@ function CreateThread() {
           </div>
           <label className="createThreadTitle">Your Text</label>
           <div>
-          <Field className="inputThread1" id="inputThreadText" name="threadText" placeholder="Your text..." />
+          <Field 
+          className="inputThread1" 
+          id="inputThreadText" 
+          name="threadText" 
+          placeholder="Your text..."
+          component="textarea"
+          />
+          
           </div>
           <div>
           <ErrorMessage className="errorUser" name="threadText" component="span"></ErrorMessage>
