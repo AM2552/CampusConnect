@@ -19,10 +19,7 @@ body {
   grid-area: aside1;
 }
 
-.aside1 input[type="file"] {
-  margin-bottom: 10px;
 
-}
 
 .fileHeader {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -48,28 +45,6 @@ body {
 .uploadButton:hover {
   background-color: #3498db; 
   color: #ffffff;
-}
-
-.selectFile {
-  text-decoration: none;
-  border: 2px solid #3498db; 
-  color: #3498db; 
-  background-color: transparent; 
-  border-radius: 10px; 
-  transition: background-color 0.3s, color 0.3s;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.selectFile:hover {
-  background-color: #3498db; 
-  color: #ffffff;
-}
-
-.selectFileDiv {
-  text-decoration: none;
-  background-color: #43eb14;
 }
 
 .getFiles {
@@ -1103,6 +1078,8 @@ footer {
 /*fileserver Aside*/
 
 .selectFileDiv {
+  padding-top: 10px;
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1120,3 +1097,28 @@ footer {
 .download {
   cursor: pointer;
 }
+
+input::file-selector-button {
+  text-decoration: none;
+  border: 1px solid #3498db; 
+  color: #000000; 
+  background-color: #e3ff57; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.selectFile {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
