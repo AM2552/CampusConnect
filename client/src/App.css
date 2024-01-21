@@ -779,3 +779,127 @@ footer {
   color: #ffffff;
 }
 
+/*Mod buttons on Thread-page*/
+
+.modButtons {
+  padding-top: 10px;
+}
+
+.deleteThreadBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.deleteThreadBtn:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+.closeThreadBtn{
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.closeThreadBtn:hover {
+  background-color: #e5a626; 
+  border: 2px solid #e5a626;
+  color: #000000;
+}
+
+.archiveThreadBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.archiveThreadBtn:hover {
+  background-color: #0ecd61; 
+  border: 2px solid #0ecd61;
+  color: #ffffff;
+}
+
+.deletePostBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.deletePostBtn:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+.editPostBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.editPostBtn:hover {
+  background-color: #0ecd61; 
+  border: 2px solid #0ecd61;
+  color: #ffffff;
+}
+
+/*search Bars for Posts*/
+
+.userSearch {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.keySearch {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.searchPostByKey {
+  display: inline;
+  padding-left: 10px;
+}
+
+
+
+
