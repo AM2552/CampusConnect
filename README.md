@@ -1,5 +1,3 @@
-<!-- @format -->
-
 # CampusConnect
 
 To get the application correctly set up you need to follow some steps:
