@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
 
   const loginAction = async (data) => {
     axios
-      .post("https://campus-connect.xyz:5001/users/login", data)
+      .post("https://62.178.154.233:5001/users/login", data)
       .then((res) => {
         localStorage.setItem("accessToken", res.data.token.split(' ')[1]);
         localStorage.setItem("user", res.data.username);
