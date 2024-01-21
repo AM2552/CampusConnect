@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Thread() {
 
   const navigate = useNavigate();
-  const serverUrl = 'http://localhost:5001';
+  const serverUrl = 'https://campus-connect.xyz:5001';
 
   let auth = useAuth();
   let { id } = useParams();
