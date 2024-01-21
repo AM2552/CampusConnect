@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
   const [modState, setModState] = useState(savedModState);
 
   const loginAction = async (data) => {
-    axiosw
+    axios
       .post("https://campus-connect.xyz:5001/users/login", data)
       .then((res) => {
         localStorage.setItem("accessToken", res.data.token.split(' ')[1]);
