@@ -1122,3 +1122,38 @@ input::file-selector-button {
   font-size: 15px;
 }
 
+.submitEdit {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+
+}
+
+.submitEdit:hover {
+  background-color: #49ef28; 
+  border: 2px solid #49ef28;
+  color: #ffffff;
+}
+
+.updateHereDiv {
+  padding-top: 5px;
+}
+
+.updatePostHere {
+  padding-top: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+

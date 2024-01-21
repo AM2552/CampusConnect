@@ -254,8 +254,11 @@ function Thread() {
                     editPost(post, updatedPost);
                     setEditingPostId(null);
                   }}>
-                    <input type="text" placeholder="Updated post text..." value={updatedPost} onChange={e => setUpdatedPost(e.target.value)} />
-                    <button type="submit">Submit</button>
+                    <div className="updateHereDiv">
+                      
+                    <input className="updatePostHere" type="text" placeholder="Updated post text..." value={updatedPost} onChange={e => setUpdatedPost(e.target.value)} />
+                    </div>
+                    <button className="submitEdit" type="submit">Submit</button>
                   </form>
                 ) : renderButton(!threadObject.closed, () => startEditing(post), 'Edit', "editPostBtn")}
               </>
