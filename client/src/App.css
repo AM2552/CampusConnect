@@ -1,56 +1,333 @@
-.App {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  flex-direction: column;
-  text-align: center;
-  background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
-  height: 100vh; /* Set the height of .App to 100% of the viewport height */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+body, html {
+  height: 100vh;
 }
 
 body {
   margin: 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 15% auto 25%;
+  grid-template-rows: 15% auto auto 10%;
+  grid-template-areas:
+    "header1 header2 header3"
+    "aside1 main aside2"
+    "aside1 main aside3"
+    "footer footer footer";
 }
 
-.thread {
-  width: 400px;
-  height: 300px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
+.aside1  {
+  padding: 10px;
+  grid-area: aside1;
+}
 
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+.aside1 input[type="file"] {
+  margin-bottom: 10px;
+
+}
+
+.fileHeader {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadButton {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.uploadButton:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.selectFile {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.selectFile:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.selectFileDiv {
+  text-decoration: none;
+  background-color: #43eb14;
+}
+
+.getFiles {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.getFiles:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+
+
+.header1 {
+  grid-area: header1;
+  border-bottom: 1px solid #ffffff50;
+}
+
+.header2 {
+  grid-area: header2;
+  border-bottom: 1px solid #ffffff50;
+}
+
+.header3 {
+  grid-area: header3;
+  border-bottom: 1px solid #ffffff50;
+}
+
+.aside2 {
+  grid-area: aside2;
+  border-left: 1px solid #ffffff50;
+}
+
+.aside3 {
+  grid-area: aside3;
+}
+
+main {
+  grid-area: main;
+  border-left: 1px solid #ffffff50;
+}
+
+footer {
+  grid-area: footer;
+}
+
+#root {
+  background: url('../public/logos/campusConnectWallpaper.PNG') center/cover no-repeat;
+  background-attachment: fixed;
+}
+
+.createButtonDiv {
+  padding-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; 
+}
+
+.createButton {
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  border: transparent; 
+  color: #D6895E;
+  background-color: rgba(111, 37, 37, 0.4) ; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.createButton:hover {
+  background-color: rgba(111, 37, 37, 0.2);
+  color: #ffffff;
+}
+
+#createButton:hover {
+  background-color: rgb(165, 102, 19);;
+}
+
+/*Login page*/
+.lgnBtncontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db;
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.registerBtn:hover {
+  background-color: #f07272; 
+  color: #ffffff;
+}
+
+.loginContainer1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-top: 17px;
+}
+
+.loginContainer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.lgCon1 {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.lgCon1:focus {
+  /**/
+}
+
+
+
+.lgCon2 {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.loginBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db;
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  background-color: #56be2a; 
+  color: #ffffff;
+}
+
+.registerButtonContainer {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.userLabel {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-left: 10px;
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.mainLoginDiv {
+  margin-top: 20px;
+}
+
+.loginLabelDiv{
+  font-size: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+
+
+
+
+.thread {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 350px;
+  border-radius: 15px;
+  flex-direction: column;
+  margin-top: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  
 }
 
 .thread:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
 }
 .thread .title {
   flex: 20%;
-  border-bottom: 1px solid lightgray;
-  background-color: rgb(30, 56, 255);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+  background-color: rgba(255, 255, 255, 0.17);
   display: grid;
   place-content: center;
   color: white;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.thread .body {
+  background-color: rgba(255, 255, 255, 0.17);
+  flex: 60%;
+  display: grid;
+  place-content: center;
+  padding-left: 20px;
+}
+
+.thread .footer {
+  flex: 20%;
+  border-top: 1px solid rgba(255, 255, 255, 0.34);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background-color: rgba(255, 255, 255, 0.17);
+  color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .App-header {
@@ -64,24 +341,782 @@ body {
   color: rgb(245, 0, 0);
 }
 
-.thread .body {
-  flex: 60%;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/*thread-Site by ID*/
+.threadObjecttitle {
+  font-size: 50px;
+}
+
+.left {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 350px;
+  border-radius: 15px;
+  flex-direction: column;
+  margin-top: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+}
+
+.threadPageLeft .threadObjecttitle {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: grid;
   place-content: center;
+  color: #83cdf2;
+  padding-top: 15px;
+  font-size: 50px;
+}
+.threadPageLeft .threadObjectthreadText {
+  word-wrap: break-word;
+  color: white;
+  display: grid;
+  place-content: center;
+  padding-left: 10px;
+  padding-top: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
 }
 
-.thread .footer {
-  flex: 20%;
-  border-top: 1px solid lightgray;
+.threadPageLeft .threadObjectusername {
+  color: #D6895E;
+  padding-left: 4px;
+  padding-top: 4px;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.threadPageBody {
+  display: grid;
+  grid-template-columns: 50% ;
+  grid-template-rows: 100vh;
+  grid-template-areas:
+    "left right";
+}
+
+.threadPageLeft {
+  border-right: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.threadPageRight {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.commentInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none; 
+  border-bottom: 1px solid #ccc; 
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: transparent;
+  color: white
+}
+
+.commentInput::placeholder {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.commentInput:focus {
+  outline: none;
+  border-bottom: 2px solid #0366d6;
+}
+
+.addPostButton {
+  background-color: #2f81ab;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.addPostButton:hover {
+  background-color: rgb(184, 112, 112);
+}
+
+.listOfPosts {
+  padding-top: 18px;
+}
+
+.post {
+  color: rgb(255, 255, 255);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 5px;
+  border-top: 1px dotted;
+  padding-bottom: 5px;
+  border-color: black;
+}
+
+
+
+
+/*LOGIN*/
+/* App.css */
+.loginOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
-  padding-left: 15px;
-  background-color: rgb(30, 56, 255);
-  color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  justify-content: center;
 }
 
-span {
-  color: red;
+.loginModal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.boxFilter {
+
+}
+
+.centerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loginCSS {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.loginCSS:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.registerCSS {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.registerCSS:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.homeCSS {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db;
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.homeCSS:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+
+.logoutCSS {
+  padding: 10px 20px;
+  
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.logoutCSS:hover {
+  background-color: #eb4614;
+  border: 2px solid #ff9f81;  
+  color: #ffffff;
+}
+
+.logoutCSSDiv {
+  padding-left: 7px;
+}
+
+.logoutBtnDivHome {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userNameHome {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.userNameHome:hover {
+  background-color: #c7eb14;
+  border: 2px solid #c7eb14;  
+  color: #000000;
+}
+
+
+
+
+
+/*login page*/
+
+
+/*register Page*/
+
+.mainDivReg {
+  margin-top: 20px;
+}
+
+.regUserName {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regUserEmail{
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regUserPwd {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.regPageBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.regPageBtnDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regPageBtn:hover {
+  background-color: #3498db; 
+  color: #4ef166;
+}
+
+.registerLabelDiv{
+  font-size: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.registrationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-top: 17px;
+}
+
+.mainDivReg {
+  margin-top: 20px;
+}
+
+
+/*error messages*/
+
+.errorUser {
+  font-size: 15px; 
+  color: rgba(255, 47, 47, 0.978);
+  margin-bottom: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+/*Filter methods*/
+
+.filterDiv {
+  padding-top: 10px;
+  padding-left: 5px
+}
+
+.searchBy {
+  padding-top: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.dateFilter {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.dateFilter:hover {
+  background-color: #3498db; 
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+
+
+
+.filterDiv1 {
+  display: inline-block;
+}
+
+.filterDiv2 {
+  display: inline-block;
+  padding-left: 7px;
+}
+
+
+.campusHeadline {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*ban/uban user div*/
+
+.banUnbanContainer {
+  padding-top: 10px;
+  padding-left: 20px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.banUserInput {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.unbanUserInput {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.banUserButtonDiv {
+  padding-left: 5px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.banUserContainer {
+  padding-bottom: 5px;
+}
+
+.banUserButton {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+
+.banUserButton:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+/*un-ban*/
+
+.unbanUserButtonDiv {
+  padding-left: 5px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.unbanUserButton {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.unbanUserButton:hover {
+  background-color: #49ef28; 
+  border: 2px solid #49ef28;
+  color: #ffffff;
+}
+
+/*Mod buttons on Thread-page*/
+
+.modButtons {
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+.deleteThreadBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.deleteThreadBtn:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+.closeThreadBtn{
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.closeThreadBtn:hover {
+  background-color: #e5a626; 
+  border: 2px solid #e5a626;
+  color: #000000;
+}
+
+.archiveThreadBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.archiveThreadBtn:hover {
+  background-color: #0ecd61; 
+  border: 2px solid #0ecd61;
+  color: #ffffff;
+}
+
+.deletePostBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.deletePostBtn:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+.editPostBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.editPostBtn:hover {
+  background-color: #0ecd61; 
+  border: 2px solid #0ecd61;
+  color: #ffffff;
+}
+
+/*search Bars for Posts*/
+
+.searchPostsMainDiv {
+  padding-top: 5px;
+
+}
+
+.userSearch {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.keySearch {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.searchPostByKey {
+  display: inline;
+  padding-left: 10px;
+}
+
+
+
+/*dropdown code*/
+
+.dropdownContainer {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 185px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 7px;
+}
+
+.banUserInput:focus + .dropdownContainer,
+.unbanUserInput:focus + .dropdownContainer {
+  display: block;
+}
+
+.dropdownItem {
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+ 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 20px;
+}
+
+.dropdownItem:hover {
+  background-color: #ddd;
+}
+
+.postAuthor {
+  padding-bottom: 5px;
+}
+
+/*create Thread Page*/
+
+.createThreadTitle {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
+
+.createThreadPage {
+  padding-left: 10px;
+  padding-top: 8px;
+}
+
+.inputTitleDiv {
+  padding-bottom: 10px;
+}
+
+.inputThread {
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  border: transparent; 
+  color: #0000009c;
+  background-color: rgba(228, 212, 212, 0.559) ; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-left: 10px;
+  padding-right: 25px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.inputThread1 {
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  border: transparent; 
+  color: #0000009c;
+  background-color: rgba(228, 212, 212, 0.559) ; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-left: 10px;
+  padding-right: 25px;
+  padding-top: 4px;
+  padding-bottom: 100px;
+  resize: vertical;
+}
+
+.inputThreadBtn {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  background-color: transparent; 
+  color: #3498db; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.inputThreadBtn:hover {
+  background-color: #43eb14;
+  border: 2px solid #43eb14;  
+  color: #000000;
+}
+
+.createThreadBtn1 {
+  padding-top: 10px;
+}
+
+
+/*fileserver Aside*/
+
+.selectFileDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloadTitle {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.trash {
+  cursor: pointer;
+}
+
+.download {
+  cursor: pointer;
 }
