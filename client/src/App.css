@@ -366,20 +366,25 @@ footer {
   place-content: center;
   color: #83cdf2;
   padding-top: 15px;
-  
+  font-size: 50px;
 }
 .threadPageLeft .threadObjectthreadText {
+  word-wrap: break-word;
   color: white;
   display: grid;
   place-content: center;
   padding-left: 10px;
   padding-top: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
 }
 
 .threadPageLeft .threadObjectusername {
-  color: aliceblue;
+  color: #D6895E;
   padding-left: 4px;
   padding-top: 4px;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .threadPageBody {
@@ -697,6 +702,7 @@ footer {
   font-size: 15px; 
   color: rgba(255, 47, 47, 0.978);
   margin-bottom: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
@@ -846,12 +852,144 @@ footer {
   color: #ffffff;
 }
 
+/*Mod buttons on Thread-page*/
+
+.modButtons {
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+.deleteThreadBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.deleteThreadBtn:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+.closeThreadBtn{
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.closeThreadBtn:hover {
+  background-color: #e5a626; 
+  border: 2px solid #e5a626;
+  color: #000000;
+}
+
+.archiveThreadBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.archiveThreadBtn:hover {
+  background-color: #0ecd61; 
+  border: 2px solid #0ecd61;
+  color: #ffffff;
+}
+
+.deletePostBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.deletePostBtn:hover {
+  background-color: #dc2209; 
+  border: 2px solid #dc2209;
+  color: #ffffff;
+}
+
+.editPostBtn {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.editPostBtn:hover {
+  background-color: #0ecd61; 
+  border: 2px solid #0ecd61;
+  color: #ffffff;
+}
+
+/*search Bars for Posts*/
+
+.searchPostsMainDiv {
+  padding-top: 5px;
+
+}
+
+.userSearch {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.keySearch {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: white;
+  color: #000000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.searchPostByKey {
+  display: inline;
+  padding-left: 10px;
+}
+
+
+
+/*dropdown code*/
+
 .dropdownContainer {
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 185px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 7px;
 }
 
 .banUserInput:focus + .dropdownContainer,
@@ -865,8 +1003,92 @@ footer {
   text-decoration: none;
   display: block;
   text-align: center;
+  cursor: pointer;
+ 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 20px;
 }
 
 .dropdownItem:hover {
   background-color: #ddd;
+}
+
+.postAuthor {
+  padding-bottom: 5px;
+}
+
+/*create Thread Page*/
+
+.createThreadTitle {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
+
+.createThreadPage {
+  padding-left: 10px;
+  padding-top: 8px;
+}
+
+.inputTitleDiv {
+  padding-bottom: 10px;
+}
+
+.inputThread {
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  border: transparent; 
+  color: #0000009c;
+  background-color: rgba(228, 212, 212, 0.559) ; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-left: 10px;
+  padding-right: 25px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.inputThread1 {
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  border: transparent; 
+  color: #0000009c;
+  background-color: rgba(228, 212, 212, 0.559) ; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-left: 10px;
+  padding-right: 25px;
+  padding-top: 4px;
+  padding-bottom: 100px;
+  resize: vertical;
+}
+
+.inputThreadBtn {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  background-color: transparent; 
+  color: #3498db; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.inputThreadBtn:hover {
+  background-color: #43eb14;
+  border: 2px solid #43eb14;  
+  color: #000000;
+}
+
+.createThreadBtn1 {
+  padding-top: 10px;
 }
