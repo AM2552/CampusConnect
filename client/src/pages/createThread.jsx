@@ -54,13 +54,23 @@ function CreateThread() {
         validationSchema={validationSchema}
       >
         <Form className="inputForm">
-          <label>Title: </label>
-          <ErrorMessage name="title" component="span"></ErrorMessage>
-          <Field id="inputTitle" name="title" placeholder="Title..." />
-          <label>Thread: </label>
-          <ErrorMessage name="threadText" component="span"></ErrorMessage>
-          <Field id="inputThreadText" name="threadText" placeholder="Text..." />
-          <button type="submit">Create Thread</button>
+          <label className="createThreadTitle">Title</label>
+          <div className="inputTitleDiv" >
+          <Field  className="inputThread" id="inputTitle" name="title" placeholder="Your title..." />
+          </div>
+          <div>
+          <ErrorMessage className="errorUser" name="title" component="span"></ErrorMessage>
+          </div>
+          <label className="createThreadTitle">Your Text</label>
+          <div>
+          <Field className="inputThread1" id="inputThreadText" name="threadText" placeholder="Your text..." />
+          </div>
+          <div>
+          <ErrorMessage className="errorUser" name="threadText" component="span"></ErrorMessage>
+          </div>
+          <div className="createThreadBtn1">
+          <button className="inputThreadBtn" type="submit">Create Thread</button>
+          </div>
         </Form>
       </Formik>
     </div>

@@ -32,7 +32,6 @@ function Thread() {
       setPostObjects(response.data);
     });
   }, [id]);
-
   useEffect(() => {
     let filtered = allPosts;
     if (searchUser.trim() !== '') {
