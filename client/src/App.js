@@ -11,7 +11,8 @@ import AuthProvider from './helpers/AuthProvider';
 import { useAuth, user } from "./helpers/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
 import BanUser from "./BanUser";
-import FileUpload from "./FileUpload";
+import FileUpload from "./pages/FileUpload";
+import FileDownload from "./pages/FileDownload";
 
 function HomeNav() {
   const auth = useAuth();
@@ -139,6 +140,7 @@ function App() {
           </main>
           <aside className="aside1">
           <FileUpload />
+          <FileDownload/>
           </aside>
           <aside className="aside2"> 
             <NavigationCreateThread/>

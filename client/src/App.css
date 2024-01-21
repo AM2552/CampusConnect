@@ -49,6 +49,42 @@ body {
   color: #ffffff;
 }
 
+.selectFile {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.selectFile:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+.getFiles {
+  text-decoration: none;
+  border: 2px solid #3498db; 
+  color: #3498db; 
+  background-color: transparent; 
+  border-radius: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.getFiles:hover {
+  background-color: #3498db; 
+  color: #ffffff;
+}
+
+
+
 .header1 {
   grid-area: header1;
   border-bottom: 1px solid #ffffff50;
