@@ -9,7 +9,7 @@ function FileDownload() {
     const fetchFiles = async () => {
         const token = localStorage.getItem("accessToken");
         try {
-            const response = await axios.get('http://localhost:5001/files/list', {
+            const response = await axios.get('http://62.178.154.233:5001/files/list', {
                 headers: {
                     'auth-token': `Bearer ${token}`
                 }
@@ -24,7 +24,7 @@ function FileDownload() {
     const handleDownload = async (filename) => {
         const token = localStorage.getItem("accessToken");
         try {
-            const response = await axios.get(`http://localhost:5001/files/download/${filename}`, {
+            const response = await axios.get(`http://62.178.154.233:5001/files/download/${filename}`, {
                 headers: {
                     'auth-token': `Bearer ${token}`
                 },
@@ -47,7 +47,7 @@ function FileDownload() {
     const handleDelete = async (filename) => {
         const token = localStorage.getItem("accessToken");
         try {
-            await axios.delete(`http://localhost:5001/files/delete/${filename}`, {
+            await axios.delete(`http://62.178.154.233:5001/files/delete/${filename}`, {
                 headers: {
                     'auth-token': `Bearer ${token}`
                 }

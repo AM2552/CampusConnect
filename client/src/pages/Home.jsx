@@ -12,7 +12,7 @@ function Home() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5001/").then((response) => {
+    axios.get("http://62.178.154.233:5001/").then((response) => {
       // Sort threads by date descending (newest first) before setting them
       const sortedByDate = response.data.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);

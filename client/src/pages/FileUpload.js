@@ -21,7 +21,7 @@ function FileUpload() {
         formData.append('username', auth.user); // Include username
 
         try {
-            const response = await axios.post('http://localhost:5001/files/upload', formData, {
+            const response = await axios.post('http://62.178.154.233:5001/files/upload', formData, {
                 headers: {
                     'auth-token': `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'

@@ -31,7 +31,7 @@ function Registration() {
         validationSchema={RegistrationSchema}
         onSubmit={(values, { setSubmitting }) => {
           axios
-            .post("http://localhost:5001/users/signup", values)
+            .post("http://62.178.154.233:5001/users/signup", values)
             .then((response) => {
               if (response.data.error) {
                 alert(response.data.error);

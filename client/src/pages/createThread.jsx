@@ -31,7 +31,7 @@ function CreateThread() {
   const onSubmit = (data) => {
     const token = localStorage.getItem("accessToken");
     axios
-    .post("http://localhost:5001/", data, {
+    .post("http://62.178.154.233:5001/", data, {
       headers: {
         'auth-token': `Bearer ${token}`
       }})
