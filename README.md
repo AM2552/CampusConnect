@@ -2,14 +2,28 @@
 
 # CampusConnect
 
-Setup for client application:
+To get the application correctly set up you need to follow some steps:
+
+- choose an IDE or code editor of your liking (we recommend VS Code) and
+   - clone the repository: https://github.com/AM2552/CampusConnect.git
+
+In this repository you will find 2 main structures:
+
+    client & server
+
+
+The client structure will act as the application's frontend and the server structure as the backend.
+
+We recommend opening two terminal instances for easier setup of the components.
+
+**Setup for client application**:
 
 - cd ./client
 - npm install react
 - npm start
 - npm install axios, allows you to make api requests, similar to fetch api from js
 
-Setup for backend application:
+**Setup for backend application**:
 
 - cd ./server
 - npm install --save-dev nodemon -> if "npm run dev" doesn't work
