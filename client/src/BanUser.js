@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuth } from "./helpers/AuthProvider";
 
 function BanUser() {
-    const serverUrl = 'http://localhost:5001';
+    const serverUrl = 'https://62.178.154.233:5001';
     
     const auth = useAuth();
     const [searchNonBannedUser, setSearchNonBannedUser] = useState("");

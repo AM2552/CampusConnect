@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Thread() {
 
   const navigate = useNavigate();
-  const serverUrl = 'http://localhost:5001';
+  const serverUrl = 'https://62.178.154.233:5001';
 
   let auth = useAuth();
   let { id } = useParams();
