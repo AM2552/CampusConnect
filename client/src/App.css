@@ -21,6 +21,7 @@ body {
 
 .aside1 input[type="file"] {
   margin-bottom: 10px;
+
 }
 
 .fileHeader {
@@ -64,6 +65,11 @@ body {
 .selectFile:hover {
   background-color: #3498db; 
   color: #ffffff;
+}
+
+.selectFileDiv: {
+  text-decoration: none;
+  background-color: #43eb14;
 }
 
 .getFiles {
@@ -1091,4 +1097,26 @@ footer {
 
 .createThreadBtn1 {
   padding-top: 10px;
+}
+
+
+/*fileserver Aside*/
+
+.selectFileDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloadTitle {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.trash {
+  cursor: pointer;
+}
+
+.download {
+  cursor: pointer;
 }

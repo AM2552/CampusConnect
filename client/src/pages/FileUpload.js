@@ -43,8 +43,12 @@ function FileUpload() {
     return (
         <div>
             <h3 className='fileHeader'>File Sharing</h3>
+            <div className='selectFileDiv'>
             <input className='selectFile' type="file" onChange={handleFileChange} />
+            </div>
+            <div className='selectFileDiv'>
             <button className='uploadButton' onClick={handleUpload}>Upload</button>
+            </div>
         </div>
     );
 }

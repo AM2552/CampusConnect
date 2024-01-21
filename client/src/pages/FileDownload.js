@@ -68,15 +68,21 @@ function FileDownload() {
     return (
         <div>
             <h3 className='fileHeader'>File Download</h3>
+            <div className="selectFileDiv">
             <button className='getFiles' onClick={fetchFiles}>Get all files</button>
+            </div>
             <ul>
                 {files.map((file, index) => (
-                    <li key={index}>
+                    <li className='downloadTitle' key={index}>
                         {file.filename}
-                        <button onClick={() => handleDownload(file.filename)}>🡇</button>
+                        <div>
+                        <button className='download' onClick={() => handleDownload(file.filename)}>🡇</button>
+                        
                         {(auth.user === file.username || auth.modState) && (
-                            <button onClick={() => handleDelete(file.filename)}>🗑️</button>
+                            <button className='trash' onClick={() => handleDelete(file.filename)}>🗑️</button>
+                            
                         )}
+                        </div>
                     </li>
                 ))}
             </ul>
